@@ -122,4 +122,92 @@
   --pmg-text: #0D1526;
   --pmg-muted: #6B7A99;
   --pmg-border: #E2E8F0;
+
+  /* Apex — aligned to Genius Sports brand kit */
+  --apex-ink: #0c1220;
+  --apex-ink-soft: #eef1f6;
+  --apex-panel: #f6f7f9;
+  --apex-panel-lift: #ffffff;
+  --apex-line: #e5e7eb;
+  --apex-line-strong: #d1d5db;
+  --apex-text: #0c1220;
+  --apex-text-muted: #5b6472;
+  --apex-accent: #0000dc;
+  --apex-accent-deep: #0000b0;
+  --apex-warm: #fa5d00;
+  --apex-glow: rgba(0, 0, 220, 0.14);
+  --apex-locked: rgba(12, 18, 32, 0.04);
+}
+
+.apex-app {
+  min-height: 100vh;
+  background: #ffffff;
+  color: var(--apex-text);
+}
+
+.apex-app h1,
+.apex-app h2,
+.apex-app h3,
+.apex-app h4 {
+  color: var(--apex-text);
+}
+
+.apex-app a {
+  color: var(--apex-accent);
+}
+
+.apex-app a:hover {
+  color: var(--apex-accent-deep);
+}
+
+.apex-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes apex-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes apex-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 220, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 0, 220, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 220, 0);
+  }
+}
+
+.apex-reveal {
+  animation: apex-reveal 0.55s ease-out both;
+}
+
+.apex-reveal-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.apex-reveal-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.apex-reveal-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.apex-step-active {
+  animation: apex-pulse-ring 2.4s ease-out infinite;
 }

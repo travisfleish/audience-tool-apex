@@ -329,6 +329,8 @@ Deno.serve(async (req: Request) => {
     const { data: inserted, error: insertError } = await supabase
       .from("activation_requests")
       .insert({
+        email: requestorEmail,
+        requestor_name: requestorName,
         looking_for: ["Activation / Deal IDs"],
         request_kind: requestKind,
         audience_id:

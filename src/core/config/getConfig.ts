@@ -6,6 +6,7 @@ import { wppConfig } from '../../apps/wpp/config';
 import { indexExchangeConfig } from '../../apps/index-exchange/config';
 import { equativConfig } from '../../apps/equativ/config';
 import { nflConfig } from '../../apps/nfl/config';
+import { apexConfig } from '../../apps/apex/config';
 import type { AppConfig } from './appConfig';
 
 const CONFIGS: Record<AppVariant, AppConfig> = {
@@ -16,6 +17,7 @@ const CONFIGS: Record<AppVariant, AppConfig> = {
   'index-exchange': indexExchangeConfig,
   equativ: equativConfig,
   nfl: nflConfig,
+  apex: apexConfig,
 };
 
 export function getConfig(variant: AppVariant): AppConfig {

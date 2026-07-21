@@ -110,9 +110,10 @@ Both modals submit to the same Edge Function: `submit-activation-request`.
 #### Processing steps
 
 1. **Validation** — Email format, required fields, at least one audience.
-2. **Supabase (Postgres)** — Insert one row into `activation_requests` with **non-PII** fields only (PII is not stored after the remove-PII migration):
+2. **Supabase (Postgres)** — Insert one row into `activation_requests` with request metadata plus requestor identity:
+   - `email`, `requestor_name`
    - `looking_for`, `request_kind`, `audience_id`, `audience_name`, `audience_display_name`, `audiences` (jsonb), `dsp_platforms`, `dsp_seat_ids`, `app_variant`
-   - No email, name, company, notes, or full DSP/preferred channel in DB.
+   - Company, notes, and preferred channel are emailed to Deal Desk but not stored in DB.
 3. **Resend (third-party)** — Send one email to Deal Desk with full request details (requestor name, company, email, DSP/CIDs, preferred channel, notes, audience list, timestamp, app variant). Plain-text body built in `buildPlainTextEmailBody`.
 4. **Response** — `{ ok: true, request_id }` on success; 4xx/5xx with `{ ok: false, error }` on failure. If insert succeeds but email fails, response is 502 with a message that the request was saved but email failed.
 
@@ -136,9 +137,10 @@ Both modals submit to the same Edge Function: `submit-activation-request`.
 
 #### Database: `activation_requests` (Supabase/Postgres)
 
-- **Schema (current):** After PII removal, the table stores only non-PII and request metadata, e.g.:
+- **Schema (current):** Stores request metadata plus requestor identity for tracking:
   - `id`, `created_at`
-  - `looking_for` (text[]), `request_kind` (e.g. `audience` / `moment`)
+  - `email`, `requestor_name`
+  - `looking_for` (text[]), `request_kind` (e.g. `audience` / `moment` / `deal`)
   - `audience_id`, `audience_name`, `audience_display_name`
   - `audiences` (jsonb) — full list for notebook flows
   - `dsp_platforms` (text[]), `dsp_seat_ids` (jsonb)

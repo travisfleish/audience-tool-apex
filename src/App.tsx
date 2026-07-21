@@ -7,6 +7,7 @@ import { WppApp } from './apps/wpp/WppApp';
 import { IndexExchangeApp } from './apps/index-exchange/IndexExchangeApp';
 import { EquativApp } from './apps/equativ/EquativApp';
 import { NflApp } from './apps/nfl/NflApp';
+import { ApexApp } from './apps/apex/ApexApp';
 // v2.0.0
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <EquativApp />
       ) : APP_VARIANT === 'nfl' ? (
         <NflApp />
+      ) : APP_VARIANT === 'apex' ? (
+        <ApexApp />
       ) : (
         <MainApp />
       )}
