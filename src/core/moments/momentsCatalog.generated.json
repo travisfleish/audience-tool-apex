@@ -1,0 +1,2150 @@
+{
+  "sports": [
+    {
+      "slug": "football",
+      "label": "Football"
+    },
+    {
+      "slug": "basketball",
+      "label": "Basketball"
+    },
+    {
+      "slug": "nhl",
+      "label": "NHL"
+    },
+    {
+      "slug": "mlb",
+      "label": "MLB"
+    },
+    {
+      "slug": "soccer_world_cup",
+      "label": "Soccer / World Cup"
+    }
+  ],
+  "mindsetPackages": [
+    {
+      "id": "winning_fans",
+      "slug": "winning_fans",
+      "category": "mindset",
+      "name": "Winning Fans",
+      "description": "Reach fans while their team is ahead or coming off a win — peak optimism and buying intent."
+    },
+    {
+      "id": "losing_fans",
+      "slug": "losing_fans",
+      "category": "mindset",
+      "name": "Losing Fans",
+      "description": "Reach loyal fans when their team is down or just lost — moments of consolation and resilience."
+    },
+    {
+      "id": "high_intensity",
+      "slug": "high_intensity",
+      "category": "mindset",
+      "name": "High Intensity",
+      "description": "Reach fans during big plays, close games, and overtime — when attention is at its absolute peak."
+    },
+    {
+      "id": "low_intensity",
+      "slug": "low_intensity",
+      "category": "mindset",
+      "name": "Low Intensity",
+      "description": "Reach fans during lulls and blowouts — opportunity to have captive second screen viewing or offer comfort offers"
+    }
+  ],
+  "emotionPackages": [
+    {
+      "id": "joy",
+      "slug": "joy",
+      "category": "emotion",
+      "name": "Joy",
+      "subtitle": "Celebration, Triumph",
+      "description": "Moments of celebration or triumph, i.e. an Overtime Score",
+      "sportDescriptions": {
+        "football": "Moments of celebration or triumph, i.e. an Overtime Score",
+        "basketball": "Moments of celebration or triumph, i.e. a Buzzer-beater",
+        "nhl": "Moments of celebration or triumph, i.e. an Overtime Goal",
+        "mlb": "Moments of celebration or triumph, i.e. a Walk-off Home Run",
+        "soccer_world_cup": "Moments of celebration or triumph, i.e. a Last-minute Winner"
+      },
+      "items": [
+        {
+          "id": "joy--all_sport--team-win-end-of-game--0",
+          "name": "Team Win (End of Game)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "joy--all_sport--championship-win--1",
+          "name": "Championship Win",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "joy--all_sport--playoff-qualification--2",
+          "name": "Playoff Qualification",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "joy--all_sport--highlight-defensive-play--3",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "joy--all_sport--overtime-score--4",
+          "name": "Overtime Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "joy--football--defensive-score-safety-pick-6--5",
+          "name": "Defensive Score (safety, pick 6)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "joy--football--championship-win--6",
+          "name": "Championship Win",
+          "sportSlug": "football"
+        },
+        {
+          "id": "joy--football--playoff-qualification--7",
+          "name": "Playoff Qualification",
+          "sportSlug": "football"
+        },
+        {
+          "id": "joy--football--overtime-score--8",
+          "name": "Overtime Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "joy--football--final-whistle-winning-team--9",
+          "name": "Final Whistle (winning team)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "joy--basketball--clutch-score-final-minute--10",
+          "name": "Clutch Score (final minute)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--basketball--playoff-qualification--11",
+          "name": "Playoff Qualification",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--basketball--highlight-defensive-play--12",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--basketball--buzzer-beater--13",
+          "name": "Buzzer-beater",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--basketball--playoff-win--14",
+          "name": "Playoff Win",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--basketball--final-buzzer-winning-team--15",
+          "name": "Final buzzer (winning team)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "joy--nhl--championship-win--16",
+          "name": "Championship Win",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--nhl--playoff-qualification--17",
+          "name": "Playoff Qualification",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--nhl--highlight-defensive-play--18",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--nhl--overtime-goal-game-winner--19",
+          "name": "Overtime goal (game winner)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--nhl--hat-trick-achieved--20",
+          "name": "Hat trick achieved",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--nhl--final-horn-winning-team--21",
+          "name": "Final Horn (Winning Team)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "joy--mlb--walk-off-home-run--22",
+          "name": "Walk-off home run",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--mlb--championship-win--23",
+          "name": "Championship Win",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--mlb--playoff-qualification--24",
+          "name": "Playoff Qualification",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--mlb--highlight-defensive-play--25",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--mlb--grand-slam-bases-loaded-hr--26",
+          "name": "Grand slam (bases-loaded HR)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--mlb--final-out-winning-team--27",
+          "name": "Final out (winning team)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "joy--soccer_world_cup--championship-win--28",
+          "name": "Championship Win",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "joy--soccer_world_cup--final-whistle-winning-team--29",
+          "name": "Final Whistle (Winning Team)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "joy--soccer_world_cup--tournament-advancement-wc--30",
+          "name": "Tournament Advancement (WC)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "joy--soccer_world_cup--highlight-defensive-play--31",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "joy--soccer_world_cup--made-penalty-kick--32",
+          "name": "Made Penalty Kick",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "joy--soccer_world_cup--goal-in-stoppage-time--33",
+          "name": "Goal in Stoppage Time",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "awe_admiration",
+      "slug": "awe_admiration",
+      "category": "emotion",
+      "name": "Awe & Admiration",
+      "subtitle": "Spectacle, Brilliance",
+      "description": "Moments of spectacle or brilliance, i.e. a Hail Mary",
+      "sportDescriptions": {
+        "football": "Moments of spectacle or brilliance, i.e. a Hail Mary",
+        "basketball": "Moments of spectacle or brilliance, i.e. a Poster Dunk",
+        "nhl": "Moments of spectacle or brilliance, i.e. a Breakaway Goal",
+        "mlb": "Moments of spectacle or brilliance, i.e. a No-hitter",
+        "soccer_world_cup": "Moments of spectacle or brilliance, i.e. a Bicycle Kick"
+      },
+      "items": [
+        {
+          "id": "awe_admiration--all_sport--record-breaking-team-performance--0",
+          "name": "Record-breaking Team Performance",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "awe_admiration--all_sport--player-career-high-milestone--1",
+          "name": "Player Career-high / Milestone",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "awe_admiration--all_sport--highlight-defensive-play--2",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "awe_admiration--all_sport--2-ot-entry--3",
+          "name": "2+ OT Entry",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "awe_admiration--football--defensive-td-pick-six-fumble-six--4",
+          "name": "Defensive TD (pick-six / fumble-six)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "awe_admiration--football--long-field-goal-55-yards--5",
+          "name": "Long field goal (55+ yards)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "awe_admiration--football--blocked-punt--6",
+          "name": "Blocked punt",
+          "sportSlug": "football"
+        },
+        {
+          "id": "awe_admiration--football--onside-kick-recovered--7",
+          "name": "Onside kick recovered",
+          "sportSlug": "football"
+        },
+        {
+          "id": "awe_admiration--football--hail-mary-completed--8",
+          "name": "Hail Mary Completed",
+          "sportSlug": "football"
+        },
+        {
+          "id": "awe_admiration--basketball--record-breaking-team-performance--9",
+          "name": "Record-breaking Team Performance",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--basketball--highlight-defensive-play--10",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--basketball--poster-dunk--11",
+          "name": "Poster Dunk",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--basketball--buzzer-beater--12",
+          "name": "Buzzer-beater",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--basketball--career-high-milestone-achieved--13",
+          "name": "Career-high / milestone achieved",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--basketball--double-ot-entry--14",
+          "name": "Double OT Entry",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "awe_admiration--nhl--record-breaking-team-performance--15",
+          "name": "Record-breaking Team Performance",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--nhl--player-career-high-milestone--16",
+          "name": "Player Career-high / Milestone",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--nhl--highlight-defensive-play--17",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--nhl--highlight-score--18",
+          "name": "Highlight Score",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--nhl--shootout-win--19",
+          "name": "Shootout Win",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--nhl--hat-trick-achieved--20",
+          "name": "Hat trick achieved",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "awe_admiration--mlb--record-breaking-team-performance--21",
+          "name": "Record-breaking Team Performance",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--mlb--highlight-defensive-play--22",
+          "name": "Highlight Defensive Play",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--mlb--11-inning-entry--23",
+          "name": "11+ Inning Entry",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--mlb--career-milestone-hr--24",
+          "name": "Career milestone HR",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--mlb--no-hitter-in-progress--25",
+          "name": "No-hitter in progress",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--mlb--perfect-game-in-progress--26",
+          "name": "Perfect game in progress",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "awe_admiration--soccer_world_cup--record-breaking-team-performance--27",
+          "name": "Record-breaking Team Performance",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "awe_admiration--soccer_world_cup--highlight-reel-score--28",
+          "name": "Highlight Reel Score",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "awe_admiration--soccer_world_cup--player-career-high-milestone--29",
+          "name": "Player Career-high / Milestone",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "awe_admiration--soccer_world_cup--highlight-goalie-save--30",
+          "name": "Highlight Goalie Save",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "awe_admiration--soccer_world_cup--goal-in-stoppage-time--31",
+          "name": "Goal in Stoppage Time",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "hope",
+      "slug": "hope",
+      "category": "emotion",
+      "name": "Hope",
+      "subtitle": "Anticipation, Belief, Will",
+      "description": "Moments of anticipation, belief, or will, i.e. a Tying Score",
+      "sportDescriptions": {
+        "football": "Moments of anticipation, belief, or will, i.e. a Tying Score",
+        "basketball": "Moments of anticipation, belief, or will, i.e. a Tying Basket",
+        "nhl": "Moments of anticipation, belief, or will, i.e. a Tying Goal",
+        "mlb": "Moments of anticipation, belief, or will, i.e. a Tying Run",
+        "soccer_world_cup": "Moments of anticipation, belief, or will, i.e. an Equalizer"
+      },
+      "items": [
+        {
+          "id": "hope--all_sport--clutch-time-player-change-substitution--0",
+          "name": "Clutch Time Player Change/Substitution",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--all_sport--tying-score--1",
+          "name": "Tying Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--all_sport--playoff-game-any-round--2",
+          "name": "Playoff Game (any round)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--all_sport--final-possession-game-winning-chance--3",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--all_sport--pregame-anticipation--4",
+          "name": "Pregame Anticipation",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--all_sport--overtime-entry--5",
+          "name": "Overtime Entry",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "hope--football--clutch-time-player-change-substitution--6",
+          "name": "Clutch Time Player Change/Substitution",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--tying-score--7",
+          "name": "Tying Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--final-possession-game-winning-chance--8",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--pregame-anticipation--9",
+          "name": "Pregame Anticipation",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--overtime-entry--10",
+          "name": "Overtime Entry",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--potential-game-winning-drive-tied-late--11",
+          "name": "Potential Game-Winning Drive (Tied Late)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--football--playoff-game-any-round--12",
+          "name": "Playoff Game (any round)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "hope--basketball--clutch-time-player-change-substitution--13",
+          "name": "Clutch Time Player Change/Substitution",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--tying-score--14",
+          "name": "Tying Score",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--final-possession-game-winning-chance--15",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--pregame-anticipation--16",
+          "name": "Pregame Anticipation",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--overtime-entry--17",
+          "name": "Overtime Entry",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--playoff-game-any-round--18",
+          "name": "Playoff Game (Any round)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--basketball--down-by-3-in-clutch-time-final-mins--19",
+          "name": "Down by <3 in Clutch Time (final mins)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "hope--nhl--tying-score--20",
+          "name": "Tying Score",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--final-possession-game-winning-chance--21",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--pregame-anticipation--22",
+          "name": "Pregame Anticipation",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--goalie-pulled-trailing-team--23",
+          "name": "Goalie pulled (trailing team)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--goalie-change--24",
+          "name": "Goalie change",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--overtime-shootout-entry--25",
+          "name": "Overtime/Shootout Entry",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--nhl--playoff-game-any-round--26",
+          "name": "Playoff Game (Any round)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "hope--mlb--pitching-change--27",
+          "name": "Pitching Change",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--walk-off-at-bat-game-winning-chance--28",
+          "name": "Walk-off-at-bat (game-winning chance)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--tying-run--29",
+          "name": "Tying Run",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--pregame-anticipation--30",
+          "name": "Pregame Anticipation",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--9th-inning-entry-tie-game--31",
+          "name": "9th Inning Entry – Tie Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--playoff-game-any-round--32",
+          "name": "Playoff Game (any round)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--mlb--extra-innings-entry--33",
+          "name": "Extra Innings Entry",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "hope--soccer_world_cup--tying-goal--34",
+          "name": "Tying Goal",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "hope--soccer_world_cup--final-possession-game-winning-chance--35",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "hope--soccer_world_cup--pregame-anticipation--36",
+          "name": "Pregame Anticipation",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "hope--soccer_world_cup--clutch-time-penalty-kick--37",
+          "name": "Clutch Time Penalty Kick",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "hope--soccer_world_cup--substitution--38",
+          "name": "Substitution",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "hope--soccer_world_cup--stoppage-time-entry--39",
+          "name": "Stoppage Time Entry",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "tension",
+      "slug": "tension",
+      "category": "emotion",
+      "name": "Tension",
+      "subtitle": "Dread, Threat, Held Breath",
+      "description": "Moments of dread, threat, or held breath, i.e. an Overtime Entry",
+      "sportDescriptions": {
+        "football": "Moments of dread, threat, or held breath, i.e. an Overtime Entry",
+        "basketball": "Moments of dread, threat, or held breath, i.e. a Final-Minute Crunch",
+        "nhl": "Moments of dread, threat, or held breath, i.e. an Overtime Entry",
+        "mlb": "Moments of dread, threat, or held breath, i.e. Extra Innings",
+        "soccer_world_cup": "Moments of dread, threat, or held breath, i.e. a Penalty Shootout"
+      },
+      "items": [
+        {
+          "id": "tension--all_sport--close-score-in-clutch-time--0",
+          "name": "Close Score in Clutch Time",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tension--all_sport--playoff-game--1",
+          "name": "Playoff Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tension--all_sport--final-possession-game-winning-chance--2",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tension--all_sport--penalty-kill-nhl-soccer--3",
+          "name": "Penalty Kill (NHL, Soccer)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tension--all_sport--overtime-entry--4",
+          "name": "Overtime Entry",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tension--football--close-score-in-clutch-time--5",
+          "name": "Close Score in Clutch Time",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tension--football--playoff-game--6",
+          "name": "Playoff Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tension--football--overtime-entry--7",
+          "name": "Overtime Entry",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tension--football--targeting-disqualification--8",
+          "name": "Targeting / Disqualification",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tension--football--potential-game-winning-drive-tied-late--9",
+          "name": "Potential Game-Winning Drive (Tied Late)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tension--basketball--close-score-in-clutch-time--10",
+          "name": "Close Score in Clutch Time",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--playoff-game--11",
+          "name": "Playoff Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--final-possession-game-winning-chance--12",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--star-player-foul-out--13",
+          "name": "Star Player Foul Out",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--playoff-game-any-round--14",
+          "name": "Playoff Game (Any round)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--down-by-3-in-clutch-time-final-mins--15",
+          "name": "Down by <3 in Clutch Time (final mins)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--basketball--overtime-entry--16",
+          "name": "Overtime Entry",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tension--nhl--close-score-in-clutch-time--17",
+          "name": "Close Score in Clutch Time",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--playoff-game--18",
+          "name": "Playoff Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--final-possession-game-winning-chance--19",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--penalty-kill--20",
+          "name": "Penalty Kill",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--fight-on-the-ice--21",
+          "name": "Fight on the Ice",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--overtime-shootout-entry--22",
+          "name": "Overtime/Shootout Entry",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--nhl--playoff-game-any-round--23",
+          "name": "Playoff Game (Any round)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tension--mlb--hit-by-pitch--24",
+          "name": "Hit by Pitch",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--mlb--benches-clear--25",
+          "name": "Benches Clear",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--mlb--walk-off-at-bat-game-winning-chance--26",
+          "name": "Walk-off-at-bat (game-winning chance)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--mlb--tying-run-at-the-plate-9th-inning--27",
+          "name": "Tying Run at the Plate (9th inning)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--mlb--playoff-game-any-round--28",
+          "name": "Playoff Game (any round)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--mlb--extra-innings-entry--29",
+          "name": "Extra Innings Entry",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tension--soccer_world_cup--close-score-in-clutch-time--30",
+          "name": "Close Score in Clutch Time",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--playoff-game--31",
+          "name": "Playoff Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--final-possession-game-winning-chance--32",
+          "name": "Final Possession (Game-winning Chance)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--penalty-card--33",
+          "name": "Penalty Card",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--penalty-kill--34",
+          "name": "Penalty Kill",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--var-in-progress--35",
+          "name": "VAR in progress",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tension--soccer_world_cup--stoppage-time-entry-tie-game--36",
+          "name": "Stoppage Time Entry – Tie Game",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "sadness",
+      "slug": "sadness",
+      "category": "emotion",
+      "name": "Sadness",
+      "subtitle": "Empathy, Resilience, Loss",
+      "description": "Moments of empathy, resilience, or loss, i.e. a Final Whistle (Loss)",
+      "sportDescriptions": {
+        "football": "Moments of empathy, resilience, or loss, i.e. a Final Whistle (Loss)",
+        "basketball": "Moments of empathy, resilience, or loss, i.e. a Final Buzzer (Loss)",
+        "nhl": "Moments of empathy, resilience, or loss, i.e. a Final Horn (Loss)",
+        "mlb": "Moments of empathy, resilience, or loss, i.e. a Final Out (Loss)",
+        "soccer_world_cup": "Moments of empathy, resilience, or loss, i.e. a Full-Time Whistle (Loss)"
+      },
+      "items": [
+        {
+          "id": "sadness--all_sport--final-whistle-loss--0",
+          "name": "Final Whistle (Loss)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--all_sport--player-ejection--1",
+          "name": "Player Ejection",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--all_sport--disallowed-score--2",
+          "name": "Disallowed Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--all_sport--missed-penalty-shot--3",
+          "name": "Missed Penalty Shot",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--all_sport--playoff-tournament-elimination--4",
+          "name": "Playoff/Tournament Elimination",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--all_sport--game-winning-score-opposing-team--5",
+          "name": "Game-Winning Score (opposing team)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "sadness--football--final-whistle-loss--6",
+          "name": "Final Whistle (Loss)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--football--player-ejection-targeting--7",
+          "name": "Player Ejection / Targeting",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--football--touchdown-overturned--8",
+          "name": "Touchdown Overturned",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--football--blocked-punt-field-goal--9",
+          "name": "Blocked Punt / Field Goal",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--football--game-winning-score-opponent--10",
+          "name": "Game-winning Score (opponent)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--football--playoff-elimination--11",
+          "name": "Playoff Elimination",
+          "sportSlug": "football"
+        },
+        {
+          "id": "sadness--basketball--final-whistle-loss--12",
+          "name": "Final Whistle (Loss)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--basketball--star-player-foul-out--13",
+          "name": "Star Player Foul Out",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--basketball--player-coach-ejection--14",
+          "name": "Player / Coach Ejection",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--basketball--clutch-free-throw-missed--15",
+          "name": "Clutch free throw missed",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--basketball--playoff-elimination--16",
+          "name": "Playoff Elimination",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--basketball--game-winning-score-opposing-team--17",
+          "name": "Game-Winning Score (opposing team)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "sadness--nhl--game-winning-goal-opponent--18",
+          "name": "Game-winning Goal (opponent)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--nhl--disallowed-goal--19",
+          "name": "Disallowed Goal",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--nhl--missed-penalty-shot--20",
+          "name": "Missed Penalty Shot",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--nhl--game-misconduct-ejection--21",
+          "name": "Game Misconduct / Ejection",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--nhl--playoff-elimination--22",
+          "name": "Playoff Elimination",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--nhl--final-horn-loss--23",
+          "name": "Final Horn (loss)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "sadness--mlb--game-winning-run-opponent--24",
+          "name": "Game-winning Run (opponent)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "sadness--mlb--playoff-elimination--25",
+          "name": "Playoff Elimination",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "sadness--mlb--shutout-loss--26",
+          "name": "Shutout Loss",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "sadness--mlb--inning-ending-out--27",
+          "name": "Inning-Ending Out",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "sadness--mlb--final-out-loss--28",
+          "name": "Final Out (loss)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "sadness--soccer_world_cup--final-whistle-loss--29",
+          "name": "Final Whistle (Loss)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "sadness--soccer_world_cup--player-ejection--30",
+          "name": "Player Ejection",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "sadness--soccer_world_cup--disallowed-goal--31",
+          "name": "Disallowed Goal",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "sadness--soccer_world_cup--missed-penalty-shot--32",
+          "name": "Missed Penalty Shot",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "sadness--soccer_world_cup--tournament-elimination--33",
+          "name": "Tournament Elimination",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "sadness--soccer_world_cup--game-winning-score-opposing-team--34",
+          "name": "Game-Winning Score (opposing team)",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "relief",
+      "slug": "relief",
+      "category": "emotion",
+      "name": "Relief",
+      "subtitle": "Exhale, Gratitude, Ease",
+      "description": "Moments of exhale, gratitude, or ease, i.e. a Clutch Time Stop",
+      "sportDescriptions": {
+        "football": "Moments of exhale, gratitude, or ease, i.e. a Clutch Time Stop",
+        "basketball": "Moments of exhale, gratitude, or ease, i.e. a Clutch Defensive Stop",
+        "nhl": "Moments of exhale, gratitude, or ease, i.e. a Clutch Save",
+        "mlb": "Moments of exhale, gratitude, or ease, i.e. a Clutch Strikeout",
+        "soccer_world_cup": "Moments of exhale, gratitude, or ease, i.e. a Clutch Save"
+      },
+      "items": [
+        {
+          "id": "relief--all_sport--successful-penalty-kill-nhl-soccer--0",
+          "name": "Successful Penalty Kill (NHL, Soccer)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "relief--all_sport--clutch-time-stop--1",
+          "name": "Clutch Time Stop",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "relief--all_sport--opponent-missed-penalty-shot--2",
+          "name": "Opponent Missed Penalty Shot",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "relief--all_sport--advance-playoffs-tournament--3",
+          "name": "Advance (Playoffs, Tournament)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "relief--all_sport--clutch-time-lead-defended--4",
+          "name": "Clutch Time Lead Defended",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "relief--football--clutch-time-stop--5",
+          "name": "Clutch Time Stop",
+          "sportSlug": "football"
+        },
+        {
+          "id": "relief--football--advance-playoffs--6",
+          "name": "Advance (Playoffs)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "relief--football--clutch-time-lead-defended--7",
+          "name": "Clutch Time Lead Defended",
+          "sportSlug": "football"
+        },
+        {
+          "id": "relief--football--opponent-missed-game-winning-field-goal--8",
+          "name": "Opponent Missed Game-winning Field Goal",
+          "sportSlug": "football"
+        },
+        {
+          "id": "relief--football--kneel-down-with-lead-for-win--9",
+          "name": "Kneel-down with Lead for Win",
+          "sportSlug": "football"
+        },
+        {
+          "id": "relief--basketball--clutch-time-stop--10",
+          "name": "Clutch Time Stop",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "relief--basketball--opponent-missed-penalty-shot--11",
+          "name": "Opponent Missed Penalty Shot",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "relief--basketball--advance-playoffs-tournament--12",
+          "name": "Advance (Playoffs, Tournament)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "relief--basketball--clutch-time-lead-defended-final-possession--13",
+          "name": "Clutch Time Lead Defended (final possession)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "relief--basketball--clutch-free-throw-made-final-mins-close-game--14",
+          "name": "Clutch free throw made (final mins, close game)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "relief--nhl--successful-penalty-kill--15",
+          "name": "Successful Penalty Kill",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "relief--nhl--clutch-time-stop--16",
+          "name": "Clutch Time Stop",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "relief--nhl--opponent-missed-penalty-shot--17",
+          "name": "Opponent Missed Penalty Shot",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "relief--nhl--playoff-advance--18",
+          "name": "Playoff Advance",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "relief--nhl--clutch-time-lead-defended--19",
+          "name": "Clutch Time Lead Defended",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "relief--mlb--clutch-time-strikeout--20",
+          "name": "Clutch Time Strikeout",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "relief--mlb--advance-playoffs-tournament--21",
+          "name": "Advance (Playoffs, Tournament)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "relief--mlb--late-inning-lead-defended--22",
+          "name": "Late Inning Lead Defended",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "relief--mlb--reliever-pitcher-entry--23",
+          "name": "Reliever Pitcher Entry",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "relief--soccer_world_cup--successful-penalty-kill--24",
+          "name": "Successful Penalty Kill",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "relief--soccer_world_cup--clutch-time-stop--25",
+          "name": "Clutch Time Stop",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "relief--soccer_world_cup--opponent-missed-penalty-shot--26",
+          "name": "Opponent Missed Penalty Shot",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "relief--soccer_world_cup--advance-playoffs-tournament--27",
+          "name": "Advance (Playoffs, Tournament)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "relief--soccer_world_cup--clutch-time-lead-defended--28",
+          "name": "Clutch Time Lead Defended",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    }
+  ],
+  "contextPackages": [
+    {
+      "id": "game_making",
+      "slug": "game_making",
+      "category": "context",
+      "name": "Game-Making / Highlight Plays",
+      "subtitle": "Momentum & spectacle",
+      "description": "Moments of momentum and spectacle, i.e. a Pick 6",
+      "sportDescriptions": {
+        "football": "Moments of momentum and spectacle, i.e. a Pick 6",
+        "basketball": "Moments of momentum and spectacle, i.e. a Poster Dunk",
+        "nhl": "Moments of momentum and spectacle, i.e. a Breakaway Goal",
+        "mlb": "Moments of momentum and spectacle, i.e. a Walk-off Home Run",
+        "soccer_world_cup": "Moments of momentum and spectacle, i.e. a Bicycle Kick Goal"
+      },
+      "items": [
+        {
+          "id": "game_making--all_sport--momentum-shift--0",
+          "name": "Momentum Shift",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "game_making--all_sport--tying-score--1",
+          "name": "Tying Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "game_making--all_sport--highlight-score-poster-dunk-unassisted-goal-trick-shot-hr--2",
+          "name": "Highlight Score (Poster Dunk, Unassisted Goal, Trick Shot, HR)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "game_making--all_sport--clutch-time-score--3",
+          "name": "Clutch Time Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "game_making--all_sport--big-defensive-play-interception-strikeout-hr-robbery-goalie-save--4",
+          "name": "Big Defensive Play (Interception, Strikeout, HR Robbery, Goalie Save)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "game_making--football--momentum-shift--5",
+          "name": "Momentum Shift",
+          "sportSlug": "football"
+        },
+        {
+          "id": "game_making--football--tying-score--6",
+          "name": "Tying Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "game_making--football--highlight-score-one-handed-catch-long-fg--7",
+          "name": "Highlight Score (One-handed Catch, Long FG)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "game_making--football--clutch-time-score--8",
+          "name": "Clutch Time Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "game_making--football--big-defensive-play-pick-6-safety--9",
+          "name": "Big Defensive Play (Pick 6, Safety)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "game_making--basketball--momentum-shift--10",
+          "name": "Momentum Shift",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "game_making--basketball--tying-score-in-clutch-time--11",
+          "name": "Tying Score in Clutch Time",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "game_making--basketball--highlight-score-poster-dunk--12",
+          "name": "Highlight Score (Poster Dunk)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "game_making--basketball--clutch-time-score--13",
+          "name": "Clutch Time Score",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "game_making--basketball--big-defensive-play-block-steal-and-score--14",
+          "name": "Big Defensive Play (block, steal & score)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "game_making--nhl--momentum-shift--15",
+          "name": "Momentum Shift",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "game_making--nhl--tying-goal--16",
+          "name": "Tying Goal",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "game_making--nhl--highlight-goal-trick-shot-breakaway-goal--17",
+          "name": "Highlight Goal (Trick Shot, Breakaway Goal)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "game_making--nhl--clutch-time-goal--18",
+          "name": "Clutch Time Goal",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "game_making--nhl--big-defensive-play-goalie-defender-save--19",
+          "name": "Big Defensive Play (Goalie/Defender Save)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "game_making--mlb--momentum-shift--20",
+          "name": "Momentum Shift",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "game_making--mlb--tying-run--21",
+          "name": "Tying Run",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "game_making--mlb--highlight-score-hr-grand-slam--22",
+          "name": "Highlight Score (HR, Grand Slam)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "game_making--mlb--clutch-time-run--23",
+          "name": "Clutch Time Run",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "game_making--mlb--big-defensive-play-strikeout-hr-robbery-impressive-catch--24",
+          "name": "Big Defensive Play (Strikeout, HR Robbery, Impressive Catch)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "game_making--soccer_world_cup--momentum-shift--25",
+          "name": "Momentum Shift",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "game_making--soccer_world_cup--tying-goal--26",
+          "name": "Tying Goal",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "game_making--soccer_world_cup--highlight-goal-header-breakaway--27",
+          "name": "Highlight Goal (Header, Breakaway)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "game_making--soccer_world_cup--clutch-time-goal--28",
+          "name": "Clutch Time Goal",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "game_making--soccer_world_cup--big-defensive-play-goalie-save-big-tackle--29",
+          "name": "Big Defensive Play (Goalie Save, Big Tackle)",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "comebacks",
+      "slug": "comebacks",
+      "category": "context",
+      "name": "Comebacks / Upsets / Underdogs",
+      "subtitle": "Surprise & resilience",
+      "description": "Moments of surprise and resilience, i.e. an Upset Win",
+      "sportDescriptions": {
+        "football": "Moments of surprise and resilience, i.e. an Upset Win",
+        "basketball": "Moments of surprise and resilience, i.e. an Upset Win",
+        "nhl": "Moments of surprise and resilience, i.e. an Upset Win",
+        "mlb": "Moments of surprise and resilience, i.e. an Upset Win",
+        "soccer_world_cup": "Moments of surprise and resilience, i.e. an Upset Win"
+      },
+      "items": [
+        {
+          "id": "comebacks--all_sport--comeback-win--0",
+          "name": "Comeback Win",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--all_sport--upset-win--1",
+          "name": "Upset Win",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--all_sport--tying-score--2",
+          "name": "Tying Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--all_sport--player-return-from-injury--3",
+          "name": "Player Return from Injury",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--all_sport--momentum-shifting-play--4",
+          "name": "Momentum Shifting Play",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--all_sport--short-handed-score-nhl-soccer--5",
+          "name": "Short-handed Score (NHL, Soccer)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "comebacks--football--comeback-win--6",
+          "name": "Comeback Win",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--football--upset-win--7",
+          "name": "Upset Win",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--football--tying-score--8",
+          "name": "Tying Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--football--player-return-from-injury--9",
+          "name": "Player Return from Injury",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--football--momentum-shifting-drive--10",
+          "name": "Momentum Shifting Drive",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--football--backup-qb-starting-game--11",
+          "name": "Backup QB Starting Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "comebacks--basketball--comeback-win--12",
+          "name": "Comeback Win",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--basketball--upset-win--13",
+          "name": "Upset Win",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--basketball--tying-score-in-clutch-time--14",
+          "name": "Tying Score in Clutch Time",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--basketball--player-return-from-injury--15",
+          "name": "Player Return from Injury",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--basketball--strong-bench-scoring--16",
+          "name": "Strong Bench Scoring",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--basketball--late-game-momentum-shift--17",
+          "name": "Late Game Momentum Shift",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "comebacks--nhl--comeback-win--18",
+          "name": "Comeback Win",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--nhl--upset-win--19",
+          "name": "Upset Win",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--nhl--tying-score--20",
+          "name": "Tying Score",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--nhl--player-return-from-injury--21",
+          "name": "Player Return from Injury",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--nhl--short-handed-goal--22",
+          "name": "Short-handed Goal",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--nhl--rookie-breakout-performance--23",
+          "name": "Rookie Breakout Performance",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "comebacks--mlb--comeback-win--24",
+          "name": "Comeback Win",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "comebacks--mlb--upset-win--25",
+          "name": "Upset Win",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "comebacks--mlb--tying-score--26",
+          "name": "Tying Score",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "comebacks--mlb--player-return-from-injury--27",
+          "name": "Player Return from Injury",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "comebacks--mlb--pitcher-change--28",
+          "name": "Pitcher Change",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "comebacks--soccer_world_cup--comeback-win--29",
+          "name": "Comeback Win",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "comebacks--soccer_world_cup--upset-win--30",
+          "name": "Upset Win",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "comebacks--soccer_world_cup--tying-score--31",
+          "name": "Tying Score",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "comebacks--soccer_world_cup--player-return-from-injury--32",
+          "name": "Player Return from Injury",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "comebacks--soccer_world_cup--short-handed-goal--33",
+          "name": "Short-handed Goal",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "big_matchup",
+      "slug": "big_matchup",
+      "category": "context",
+      "name": "Big Matchup",
+      "subtitle": "Rivalry, championship, playoff implications",
+      "description": "Moments of rivalry or playoff stakes, i.e. a Rivalry Game",
+      "sportDescriptions": {
+        "football": "Moments of rivalry or playoff stakes, i.e. a Rivalry Game",
+        "basketball": "Moments of rivalry or playoff stakes, i.e. a Rivalry Game",
+        "nhl": "Moments of rivalry or playoff stakes, i.e. a Rivalry Game",
+        "mlb": "Moments of rivalry or playoff stakes, i.e. a Rivalry Game",
+        "soccer_world_cup": "Moments of rivalry or playoff stakes, i.e. a Derby Match"
+      },
+      "items": [
+        {
+          "id": "big_matchup--all_sport--rivalry-game--0",
+          "name": "Rivalry Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--all_sport--ranked-opponent-game--1",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--all_sport--playoff-game--2",
+          "name": "Playoff Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--all_sport--elimination-game--3",
+          "name": "Elimination Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--all_sport--primetime-game--4",
+          "name": "Primetime Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--all_sport--championship-game--5",
+          "name": "Championship Game",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "big_matchup--football--rivalry-game--6",
+          "name": "Rivalry Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--ranked-opponent-game--7",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--playoff-game--8",
+          "name": "Playoff Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--elimination-game--9",
+          "name": "Elimination Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--primetime-game--10",
+          "name": "Primetime Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--championship-game--11",
+          "name": "Championship Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--international-game--12",
+          "name": "International Game",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--football--conference-matchup--13",
+          "name": "Conference Matchup",
+          "sportSlug": "football"
+        },
+        {
+          "id": "big_matchup--basketball--rivalry-game--14",
+          "name": "Rivalry Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--ranked-opponent-game--15",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--playoff-game--16",
+          "name": "Playoff Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--elimination-game--17",
+          "name": "Elimination Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--primetime-game--18",
+          "name": "Primetime Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--championship-game--19",
+          "name": "Championship Game",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--basketball--championship-rematch--20",
+          "name": "Championship Rematch",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "big_matchup--nhl--rivalry-game--21",
+          "name": "Rivalry Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--ranked-opponent-game--22",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--playoff-game--23",
+          "name": "Playoff Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--elimination-game--24",
+          "name": "Elimination Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--primetime-game--25",
+          "name": "Primetime Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--championship-game--26",
+          "name": "Championship Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--outdoor-game--27",
+          "name": "Outdoor Game",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--nhl--stanley-cup-rematch--28",
+          "name": "Stanley Cup Rematch",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "big_matchup--mlb--rivalry-game--29",
+          "name": "Rivalry Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--ranked-opponent-game--30",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--playoff-game--31",
+          "name": "Playoff Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--elimination-game--32",
+          "name": "Elimination Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--primetime-game--33",
+          "name": "Primetime Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--championship-game--34",
+          "name": "Championship Game",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--mlb--double-header--35",
+          "name": "Double Header",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--rivalry-game--36",
+          "name": "Rivalry Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--ranked-opponent-game--37",
+          "name": "Ranked Opponent Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--playoff-game--38",
+          "name": "Playoff Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--elimination-game--39",
+          "name": "Elimination Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--primetime-game--40",
+          "name": "Primetime Game",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "big_matchup--soccer_world_cup--championship-game--41",
+          "name": "Championship Game",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "winners",
+      "slug": "winners",
+      "category": "context",
+      "name": "Winners",
+      "subtitle": "Victory & advancement",
+      "description": "Moments of victory and advancement, i.e. a Championship Won",
+      "sportDescriptions": {
+        "football": "Moments of victory and advancement, i.e. a Championship Won",
+        "basketball": "Moments of victory and advancement, i.e. a Championship Won",
+        "nhl": "Moments of victory and advancement, i.e. a Stanley Cup Won",
+        "mlb": "Moments of victory and advancement, i.e. a World Series Won",
+        "soccer_world_cup": "Moments of victory and advancement, i.e. a World Cup Won"
+      },
+      "items": [
+        {
+          "id": "winners--all_sport--final-whistle-game-won--0",
+          "name": "Final Whistle (Game Won)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "winners--all_sport--playoff-berth-clinched--1",
+          "name": "Playoff Berth Clinched",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "winners--all_sport--championship-won--2",
+          "name": "Championship Won",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "winners--all_sport--advancement-playoffs-tournament--3",
+          "name": "Advancement (Playoffs, Tournament)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "winners--all_sport--game-winning-score--4",
+          "name": "Game-winning Score",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "winners--football--final-whistle-game-won--5",
+          "name": "Final Whistle (Game Won)",
+          "sportSlug": "football"
+        },
+        {
+          "id": "winners--football--playoff-berth-clinched--6",
+          "name": "Playoff Berth Clinched",
+          "sportSlug": "football"
+        },
+        {
+          "id": "winners--football--super-bowl-won--7",
+          "name": "Super Bowl Won",
+          "sportSlug": "football"
+        },
+        {
+          "id": "winners--football--playoff-advancement--8",
+          "name": "Playoff Advancement",
+          "sportSlug": "football"
+        },
+        {
+          "id": "winners--football--game-winning-score--9",
+          "name": "Game-winning Score",
+          "sportSlug": "football"
+        },
+        {
+          "id": "winners--basketball--final-buzzer-game-won--10",
+          "name": "Final Buzzer (Game Won)",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--basketball--playoff-berth-clinched--11",
+          "name": "Playoff Berth Clinched",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--basketball--championship-won--12",
+          "name": "Championship Won",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--basketball--playoff-advancement--13",
+          "name": "Playoff Advancement",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--basketball--game-winning-score--14",
+          "name": "Game-winning Score",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--basketball--buzzer-beater--15",
+          "name": "Buzzer Beater",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "winners--nhl--final-horn-game-won--16",
+          "name": "Final Horn (Game Won)",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "winners--nhl--playoff-berth-clinched--17",
+          "name": "Playoff Berth Clinched",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "winners--nhl--stanley-cup-won--18",
+          "name": "Stanley Cup Won",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "winners--nhl--playoff-advancement--19",
+          "name": "Playoff Advancement",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "winners--nhl--game-winning-score--20",
+          "name": "Game-winning Score",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "winners--mlb--final-out-game-won--21",
+          "name": "Final Out (Game Won)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "winners--mlb--playoff-berth-clinched--22",
+          "name": "Playoff Berth Clinched",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "winners--mlb--world-series-won--23",
+          "name": "World Series Won",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "winners--mlb--playoff-advancement--24",
+          "name": "Playoff Advancement",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "winners--mlb--game-winning-run--25",
+          "name": "Game-winning Run",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "winners--soccer_world_cup--final-whistle-game-won--26",
+          "name": "Final Whistle (Game Won)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "winners--soccer_world_cup--tournament-berth-clinched--27",
+          "name": "Tournament Berth Clinched",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "winners--soccer_world_cup--championship-won--28",
+          "name": "Championship Won",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "winners--soccer_world_cup--advancement-tournament--29",
+          "name": "Advancement (Tournament)",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "winners--soccer_world_cup--game-winning-goal--30",
+          "name": "Game-winning Goal",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    },
+    {
+      "id": "tournament",
+      "slug": "tournament",
+      "category": "context",
+      "name": "Tournament",
+      "subtitle": "World Cup, playoffs & elimination",
+      "description": "Moments of playoff or elimination stakes, i.e. an Elimination",
+      "sportDescriptions": {
+        "football": "Moments of playoff or elimination stakes, i.e. a Playoff Elimination",
+        "basketball": "Moments of playoff or elimination stakes, i.e. a Playoff Elimination",
+        "nhl": "Moments of playoff or elimination stakes, i.e. a Playoff Elimination",
+        "mlb": "Moments of playoff or elimination stakes, i.e. a Playoff Elimination",
+        "soccer_world_cup": "Moments of playoff or elimination stakes, i.e. a Group-Stage Elimination"
+      },
+      "items": [
+        {
+          "id": "tournament--all_sport--advancement--0",
+          "name": "Advancement",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--elimination--1",
+          "name": "Elimination",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--upset-win-lose--2",
+          "name": "Upset Win/Lose",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--match-lead-up--3",
+          "name": "Match Lead-up",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--clutch-time-close-score-10-mins-soccer-2-mins-basketball--4",
+          "name": "Clutch Time Close Score (10 mins soccer, 2 mins basketball)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--decisive-win-in-the-making--5",
+          "name": "Decisive win in the making",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--all_sport--late-game-rally-tying-goal-with-15-mins-left-soccer-tying-bucket-with-2-mins-left-basketball--6",
+          "name": "Late Game Rally (tying goal with 15 mins left – soccer, tying bucket with 2 mins left – basketball)",
+          "sportSlug": "all_sport"
+        },
+        {
+          "id": "tournament--football--advancement--7",
+          "name": "Advancement",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--football--elimination--8",
+          "name": "Elimination",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--football--upset-win-lose--9",
+          "name": "Upset Win/Lose",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--football--game-lead-up--10",
+          "name": "Game Lead-up",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--football--decisive-win-in-the-making--11",
+          "name": "Decisive win in the making",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--football--late-game-rally--12",
+          "name": "Late Game Rally",
+          "sportSlug": "football"
+        },
+        {
+          "id": "tournament--basketball--advancement--13",
+          "name": "Advancement",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--basketball--elimination--14",
+          "name": "Elimination",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--basketball--upset-win-lose--15",
+          "name": "Upset Win/Lose",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--basketball--game-lead-up--16",
+          "name": "Game Lead-up",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--basketball--decisive-win-in-the-making--17",
+          "name": "Decisive win in the making",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--basketball--late-game-rally--18",
+          "name": "Late Game Rally",
+          "sportSlug": "basketball"
+        },
+        {
+          "id": "tournament--nhl--advancement--19",
+          "name": "Advancement",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--nhl--elimination--20",
+          "name": "Elimination",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--nhl--upset-win-lose--21",
+          "name": "Upset Win/Lose",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--nhl--game-lead-up--22",
+          "name": "Game Lead-up",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--nhl--decisive-win-in-the-making--23",
+          "name": "Decisive win in the making",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--nhl--late-game-rally--24",
+          "name": "Late Game Rally",
+          "sportSlug": "nhl"
+        },
+        {
+          "id": "tournament--mlb--advancement--25",
+          "name": "Advancement",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--mlb--elimination--26",
+          "name": "Elimination",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--mlb--upset-win-lose--27",
+          "name": "Upset Win/Lose",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--mlb--game-lead-up--28",
+          "name": "Game Lead-up",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--mlb--decisive-win-in-the-making--29",
+          "name": "Decisive win in the making",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--mlb--late-game-rally-tying-run-in-9th-inning--30",
+          "name": "Late Game Rally (tying run in 9th Inning)",
+          "sportSlug": "mlb"
+        },
+        {
+          "id": "tournament--soccer_world_cup--advancement--31",
+          "name": "Advancement",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tournament--soccer_world_cup--elimination--32",
+          "name": "Elimination",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tournament--soccer_world_cup--upset-win-lose--33",
+          "name": "Upset Win/Lose",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tournament--soccer_world_cup--match-lead-up--34",
+          "name": "Match Lead-up",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tournament--soccer_world_cup--decisive-win-in-the-making--35",
+          "name": "Decisive win in the making",
+          "sportSlug": "soccer_world_cup"
+        },
+        {
+          "id": "tournament--soccer_world_cup--late-game-rally-tying-goal-with-15-mins-left--36",
+          "name": "Late Game Rally (tying goal with 15 mins left)",
+          "sportSlug": "soccer_world_cup"
+        }
+      ]
+    }
+  ]
+}

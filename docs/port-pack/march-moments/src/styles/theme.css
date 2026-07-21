@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "ESKlarheitKurrentTRIAL";
+  src: url("/fonts/KlarheitKurrent-Regular_2456150069.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ESKlarheitKurrentTRIAL";
+  src: url("/fonts/KlarheitKurrent-Book.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ESKlarheitKurrentTRIAL";
+  src: url("/fonts/KlarheitKurrent-Bold_4110053601.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-heading: "ESKlarheitKurrentTRIAL", "Red Hat Text", system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --gs-primary-900: #0c1220;
+  --gs-primary-700: #1a2332;
+  --gs-accent-500: #1e6aff;
+  --gs-accent-600: #1559dd;
+  --gs-neon: #00ffcc;
+  --gs-bg: #ffffff;
+  --gs-surface: #f6f7f9;
+  --pmg-bg: #ffffff;
+  --pmg-surface: #f6f7f9;
+  --gs-muted: #f2f4f7;
+  --gs-border: #e5e7eb;
+  --gs-text: #0c1220;
+  --gs-text-muted: #5b6472;
+  --gs-success: #17b26a;
+  --gs-warning: #f79009;
+  --gs-error: #d92d20;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}

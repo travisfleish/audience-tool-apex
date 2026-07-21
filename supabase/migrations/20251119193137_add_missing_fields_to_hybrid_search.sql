@@ -1,0 +1,106 @@
+/*
+  # Add Missing Fields to Hybrid Search Function
+
+  1. Changes
+    - Add missing fields: tags, is_featured, season, created_at, updated_at
+    - Ensure returned data matches Audience interface
+  
+  2. Purpose
+    - Fix frontend error where audience.tags is undefined
+    - Return complete audience data from hybrid search
+*/
+
+DROP FUNCTION IF EXISTS hybrid_semantic_search(text, vector, float, int);
+
+CREATE OR REPLACE FUNCTION hybrid_semantic_search(
+  query_text text,
+  query_embedding vector(384),
+  match_threshold float DEFAULT 0.3,
+  match_count int DEFAULT 10
+)
+RETURNS TABLE (
+  id uuid,
+  name text,
+  display_name text,
+  hierarchical_context text,
+  description text,
+  sports_league text,
+  category text,
+  tags text[],
+  is_featured boolean,
+  season text,
+  created_at timestamptz,
+  updated_at timestamptz,
+  similarity float,
+  keyword_boost float,
+  final_score float
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+  RETURN QUERY
+  WITH semantic_results AS (
+    SELECT
+      a.id,
+      a.name,
+      a.display_name,
+      a.hierarchical_context,
+      a.description,
+      a.sports_league,
+      a.category,
+      a.tags,
+      a.is_featured,
+      a.season,
+      a.created_at,
+      a.updated_at,
+      1 - (a.hierarchical_context_embedding <=> query_embedding) AS similarity
+    FROM audiences a
+    WHERE a.hierarchical_context_embedding IS NOT NULL
+  ),
+  scored_results AS (
+    SELECT
+      sr.*,
+      (
+        -- Exact match in display_name (case-insensitive) - highest boost
+        CASE WHEN LOWER(sr.display_name) = LOWER(query_text) THEN 0.5
+        -- Partial match in display_name (case-insensitive)
+        WHEN LOWER(sr.display_name) LIKE '%' || LOWER(query_text) || '%' THEN 0.3
+        ELSE 0.0 END
+        +
+        -- Match in description (case-insensitive)
+        CASE WHEN LOWER(sr.description) LIKE '%' || LOWER(query_text) || '%' THEN 0.25
+        ELSE 0.0 END
+        +
+        -- Match in hierarchical_context (case-insensitive)
+        CASE WHEN LOWER(sr.hierarchical_context) LIKE '%' || LOWER(query_text) || '%' THEN 0.2
+        ELSE 0.0 END
+        +
+        -- Trigram similarity boost for fuzzy matching
+        CASE WHEN similarity(LOWER(sr.display_name), LOWER(query_text)) > 0.5 THEN 0.1
+        ELSE 0.0 END
+      )::float AS keyword_boost
+    FROM semantic_results sr
+  )
+  SELECT
+    sr.id,
+    sr.name,
+    sr.display_name,
+    sr.hierarchical_context,
+    sr.description,
+    sr.sports_league,
+    sr.category,
+    sr.tags,
+    sr.is_featured,
+    sr.season,
+    sr.created_at,
+    sr.updated_at,
+    sr.similarity,
+    sr.keyword_boost,
+    (sr.similarity + sr.keyword_boost)::float AS final_score
+  FROM scored_results sr
+  WHERE (sr.similarity + sr.keyword_boost) >= match_threshold
+  ORDER BY final_score DESC, sr.similarity DESC
+  LIMIT match_count;
+END;
+$$;

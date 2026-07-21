@@ -1,0 +1,215 @@
+/*
+  # Enforce Strict Event Membership Filtering
+
+  1. Changes
+    - Replaces 8-parameter `hybrid_semantic_search` to require strict event membership
+      when `season_event_keys` is provided.
+    - Keeps existing semantic/lexical/exact scoring and bounded seasonal additive behavior.
+
+  2. Rationale
+    - Prevents cross-sport leakage by requiring audiences to be explicitly mapped
+      to the selected seasonal event(s).
+*/
+
+create or replace function public.hybrid_semantic_search(
+  query_text text,
+  raw_query_text text,
+  query_embedding extensions.vector,
+  match_count integer default 50,
+  score_threshold double precision default 0.25,
+  season_year integer default null,
+  season_quarter text default null,
+  season_event_keys text[] default null
+)
+returns table(
+  id uuid,
+  name text,
+  display_name text,
+  hierarchical_context text,
+  description text,
+  sports_league text,
+  category text,
+  tags text[],
+  is_featured boolean,
+  created_at timestamptz,
+  updated_at timestamptz,
+  similarity double precision,
+  lexical_score double precision,
+  final_score double precision
+)
+language plpgsql stable
+as $function$
+declare
+  ts_query tsquery;
+  token_count integer;
+  w_semantic double precision;
+  w_lexical double precision;
+  resolved_season_year integer;
+  has_seasonal_intent boolean;
+  require_strict_event_match boolean;
+  ethnicity_demotion_multiplier constant double precision := 0.40;
+  ethnicity_query_regex constant text := '\m(african[ -]?american|asian|hispanic|latino|latina|latinx)\M';
+  ethnicity_audience_regex constant text := '\m(african[ -]?american|asian|hispanic|latino|latina|latinx)\M';
+  query_is_ethnicity_direct boolean;
+begin
+  ts_query := websearch_to_tsquery('english', raw_query_text);
+
+  token_count := array_length(
+    string_to_array(trim(regexp_replace(raw_query_text, '\s+', ' ', 'g')), ' '),
+    1
+  );
+
+  if token_count is null or token_count <= 2 then
+    w_semantic := 0.65;
+    w_lexical := 0.35;
+  else
+    w_semantic := 0.80;
+    w_lexical := 0.20;
+  end if;
+
+  resolved_season_year := coalesce(season_year, 2026);
+  has_seasonal_intent := season_quarter is not null
+    or (season_event_keys is not null and coalesce(array_length(season_event_keys, 1), 0) > 0);
+  require_strict_event_match := season_event_keys is not null and coalesce(array_length(season_event_keys, 1), 0) > 0;
+
+  query_is_ethnicity_direct := lower(raw_query_text) ~ ethnicity_query_regex;
+
+  return query
+  with scored as (
+    select
+      a.id,
+      a.name,
+      a.display_name,
+      a.hierarchical_context,
+      a.description,
+      a.sports_league,
+      a.category,
+      a.tags,
+      a.is_featured,
+      a.created_at,
+      a.updated_at,
+      (1 - (a.hierarchical_context_embedding <=> query_embedding))::double precision as sim,
+      coalesce(ts_rank_cd(a.search_vector, ts_query), 0)::double precision as lex,
+      case
+        when lower(split_part(a.hierarchical_context, '|', 1)) like '%' || lower(raw_query_text) || '%'
+          or lower(a.name) like '%' || lower(raw_query_text) || '%'
+        then 0.5
+        else 0.0
+      end::double precision as exact_boost,
+      (
+        lower(coalesce(a.display_name, '')) ~ ethnicity_audience_regex
+        or lower(coalesce(a.name, '')) ~ ethnicity_audience_regex
+        or lower(split_part(coalesce(a.hierarchical_context, ''), '|', 1)) ~ ethnicity_audience_regex
+      ) as is_ethnicity_audience
+    from audiences a
+    where a.hierarchical_context_embedding is not null
+  ),
+  max_lex as (
+    select max(s.lex) as raw_max from scored s
+  ),
+  seasonal as (
+    select
+      s.id as audience_id,
+      coalesce(max(
+        case
+          when asm.component_type = 'baseline' then coalesce(asm.baseline_weight, 0)
+          else 0
+        end
+      ), 0)::double precision as league_baseline_component,
+      coalesce(max(
+        case
+          when season_quarter is not null and asm.quarter = season_quarter then
+            case
+              when asm.component_type = 'baseline' then least(0.20, coalesce(asm.baseline_weight, 0))
+              when asm.component_type = 'event' then 0.20
+              else 0
+            end
+          else 0
+        end
+      ), 0)::double precision as quarter_component,
+      coalesce(max(
+        case
+          when asm.component_type = 'event'
+            and season_event_keys is not null
+            and asm.event_key = any(season_event_keys)
+          then least(0.30, coalesce(asm.live_weight, 0))
+          else 0
+        end
+      ), 0)::double precision as event_component
+    from scored s
+    left join public.audience_seasonal_map asm
+      on asm.audience_id = s.id
+     and asm.year = resolved_season_year
+    group by s.id
+  ),
+  enriched as (
+    select
+      s.*,
+      case
+        when ml.raw_max is null or ml.raw_max = 0 then 0
+        else (s.lex / ml.raw_max)
+      end::double precision as lex_norm,
+      case
+        when has_seasonal_intent then
+          least(
+            0.35,
+            greatest(se.league_baseline_component, se.quarter_component) + se.event_component
+          )
+        else 0
+      end::double precision as seasonal_additive
+    from scored s
+    cross join max_lex ml
+    left join seasonal se on se.audience_id = s.id
+  )
+  select
+    e.id,
+    e.name,
+    e.display_name,
+    e.hierarchical_context,
+    e.description,
+    e.sports_league,
+    e.category,
+    e.tags,
+    e.is_featured,
+    e.created_at,
+    e.updated_at,
+    e.sim as similarity,
+    e.lex_norm as lexical_score,
+    (
+      (
+        e.sim * w_semantic +
+        e.lex_norm * w_lexical +
+        e.exact_boost +
+        e.seasonal_additive
+      ) * case
+        when e.is_ethnicity_audience and not query_is_ethnicity_direct then ethnicity_demotion_multiplier
+        else 1.0
+      end
+    )::double precision as final_score
+  from enriched e
+  where (
+    not require_strict_event_match
+    or exists (
+      select 1
+      from public.audience_seasonal_map asm_filter
+      where asm_filter.audience_id = e.id
+        and asm_filter.year = resolved_season_year
+        and asm_filter.component_type = 'event'
+        and asm_filter.event_key = any(season_event_keys)
+    )
+  )
+  and (
+    (
+      e.sim * w_semantic +
+      e.lex_norm * w_lexical +
+      e.exact_boost +
+      e.seasonal_additive
+    ) * case
+      when e.is_ethnicity_audience and not query_is_ethnicity_direct then ethnicity_demotion_multiplier
+      else 1.0
+    end
+  ) >= score_threshold
+  order by final_score desc
+  limit match_count;
+end;
+$function$;

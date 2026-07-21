@@ -1,0 +1,77 @@
+@import "./styles/theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+:root {
+  color: var(--gs-text);
+  background-color: var(--gs-bg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--gs-bg);
+  color: var(--gs-text);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--gs-bg);
+}
+
+a {
+  color: inherit;
+}
+
+.gs-stripe-surface-site {
+  background-size: 152% auto;
+  opacity: 0.16;
+}
+
+@media (min-width: 1024px) {
+  .gs-stripe-surface-site {
+    background-size: 126% auto;
+    opacity: 0.28;
+  }
+}
+
+.gs-stripe-mask-hero-right {
+  -webkit-mask-image: radial-gradient(132% 88% at 100% 50%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(132% 88% at 100% 50%, #000 58%, transparent 100%);
+}
+
+.section-shell {
+  @apply rounded-2xl p-6 shadow-soft md:p-10;
+  background-color: var(--gs-surface);
+}
+
+.section-title {
+  @apply font-heading text-2xl font-semibold tracking-tight md:text-3xl;
+  color: var(--gs-text);
+}
+
+.section-copy {
+  @apply mt-4 text-base md:text-lg;
+  color: var(--gs-text-muted);
+}
+
+@keyframes dropdownFadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

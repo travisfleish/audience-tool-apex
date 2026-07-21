@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/world-cup", "destination": "/index.html" },
+    { "source": "/notebook", "destination": "/index.html" },
+    { "source": "/gate", "destination": "/index.html" }
+  ]
+}
