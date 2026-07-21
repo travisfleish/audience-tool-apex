@@ -57,14 +57,30 @@ export function getPackageItemsForSport(
   pkg: ThemedMomentPackage,
   sportSlug: string,
 ): { id: string; name: string }[] {
+  // Shared / unmapped sports: expand the all_sport placeholder rows only.
+  if (sportSlug === 'all_sport') {
+    return expandToDiscreteSignals(
+      pkg.items
+        .filter(item => item.sportSlug === 'all_sport')
+        .map(({ id, name }) => ({ id, name })),
+    );
+  }
+
   const sportItems = pkg.items.filter(item => item.sportSlug === sportSlug);
-  const sportNames = new Set(sportItems.map(item => item.name));
-  const allSportOnly = pkg.items.filter(
-    item => item.sportSlug === 'all_sport' && !sportNames.has(item.name),
-  );
+
+  // Sport-specific catalog rows are the source of truth. Mixing in all_sport
+  // parentheticals (e.g. "10 Mins Soccer, 2 Mins Basketball") leaked other
+  // sports into every list. Fall back to shared all_sport only when this
+  // sport has no dedicated rows yet — placeholders until Product Marketing
+  // ships the canonical per-sport signal list.
+  if (sportItems.length > 0) {
+    return expandToDiscreteSignals(sportItems.map(({ id, name }) => ({ id, name })));
+  }
 
   return expandToDiscreteSignals(
-    [...allSportOnly, ...sportItems].map(({ id, name }) => ({ id, name })),
+    pkg.items
+      .filter(item => item.sportSlug === 'all_sport')
+      .map(({ id, name }) => ({ id, name })),
   );
 }
 

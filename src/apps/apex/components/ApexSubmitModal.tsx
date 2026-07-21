@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Check, CheckCircle2, ChevronDown, Loader2, X } from 'lucide-react';
-import { supabase } from '../../../core/supabase';
 import { APEX_INVENTORY_CHANNELS } from '../config';
 import { formatApexMomentLabel, type ApexDeal } from '../apexDeal';
 import { useApexGate } from '../ApexGateContext';
@@ -61,25 +60,44 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
 
     setIsSubmitting(true);
     try {
-      const { error: insertError } = await supabase.from('apex_form_submits').insert({
-        name,
-        email,
-        brand: brand.trim(),
-        inventory_channel: inventoryChannel,
-        notes: notes.trim() || null,
-        request_kind: 'apex_moment_rfp',
-        deal_payload: {
-          sport: deal.sport,
-          vertical: deal.vertical,
-          sub_verticals: deal.subVerticals,
-          moments: deal.moments,
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-activation-request`;
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          requestor_email: email,
+          requestor_name: name,
+          brand: brand.trim(),
+          preferred_inventory_channel: inventoryChannel,
+          notes: notes.trim() || null,
+          app_variant: import.meta.env.VITE_APP_VARIANT || 'apex',
+          request_kind: 'apex_moment_rfp',
+          deal_payload: {
+            sport: deal.sport,
+            vertical: deal.vertical,
+            sub_verticals: deal.subVerticals,
+            moments: deal.moments,
+          },
+        }),
       });
-      if (insertError) throw insertError;
+
+      const data = await response.json();
+      if (!response.ok || !data?.ok) {
+        throw new Error(
+          typeof data?.error === 'string' && data.error.trim().length > 0
+            ? data.error
+            : 'Failed to submit request. Please try again.',
+        );
+      }
+
       setSubmitted(true);
       onSubmitted();
-    } catch {
-      setError('Something went wrong. Please try again.');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : null;
+      setError(message && message.trim().length > 0 ? message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

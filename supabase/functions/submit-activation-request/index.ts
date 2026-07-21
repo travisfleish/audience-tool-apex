@@ -24,11 +24,28 @@ interface ActivationMoment {
   displayName: string;
 }
 
+interface ApexDealLabel {
+  id?: string | null;
+  slug?: string | null;
+  label?: string | null;
+  name?: string | null;
+  packageName?: string | null;
+  sportLabel?: string | null;
+}
+
+interface ApexDealPayload {
+  sport?: ApexDealLabel | null;
+  vertical?: ApexDealLabel | null;
+  sub_verticals?: ApexDealLabel[] | null;
+  moments?: ApexDealLabel[] | null;
+}
+
 interface SubmitActivationRequestBody {
   requestor_email: string;
   requestor_name?: string | null;
   requestor_company?: string | null;
-  dsp: string;
+  brand?: string | null;
+  dsp?: string | null;
   dsp_platforms?: string[] | null;
   dsp_seat_id?: string | null;
   dsp_seat_ids?: DspSeatIdEntry[] | null;
@@ -42,9 +59,10 @@ interface SubmitActivationRequestBody {
   flight_end?: string | null;
   approx_budget?: string | null;
   ssp_preference?: string | null;
-  audiences: ActivationAudience[];
+  audiences?: ActivationAudience[];
   moment?: ActivationMoment | null;
-  request_kind?: "audience" | "moment" | "deal" | null;
+  deal_payload?: ApexDealPayload | null;
+  request_kind?: "audience" | "moment" | "deal" | "apex_moment_rfp" | null;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,6 +119,99 @@ function sanitizeDspSeatIds(input: unknown): DspSeatIdEntry[] {
       return { platform, seatId };
     })
     .filter((item): item is DspSeatIdEntry => item !== null);
+}
+
+function labelFromDealItem(item: ApexDealLabel | null | undefined): string | null {
+  if (!item || typeof item !== "object") return null;
+  return (
+    asNonEmptyString(item.label) ??
+    asNonEmptyString(item.name) ??
+    asNonEmptyString(item.packageName) ??
+    null
+  );
+}
+
+function formatApexMomentLine(item: ApexDealLabel): string {
+  const parts = [
+    asNonEmptyString(item.name) ?? asNonEmptyString(item.label),
+    asNonEmptyString(item.packageName),
+    asNonEmptyString(item.sportLabel),
+  ].filter((part): part is string => Boolean(part));
+  return parts.join(" · ") || "Untitled moment";
+}
+
+function sanitizeApexDealPayload(input: unknown): ApexDealPayload | null {
+  if (!input || typeof input !== "object") return null;
+  const obj = input as Record<string, unknown>;
+  const asLabel = (value: unknown): ApexDealLabel | null => {
+    if (!value || typeof value !== "object") return null;
+    const record = value as Record<string, unknown>;
+    return {
+      id: asNonEmptyString(record.id),
+      slug: asNonEmptyString(record.slug),
+      label: asNonEmptyString(record.label),
+      name: asNonEmptyString(record.name),
+      packageName: asNonEmptyString(record.packageName),
+      sportLabel: asNonEmptyString(record.sportLabel),
+    };
+  };
+  const subVerticals = Array.isArray(obj.sub_verticals)
+    ? obj.sub_verticals.map(asLabel).filter((item): item is ApexDealLabel => item !== null)
+    : [];
+  const moments = Array.isArray(obj.moments)
+    ? obj.moments.map(asLabel).filter((item): item is ApexDealLabel => item !== null)
+    : [];
+  return {
+    sport: asLabel(obj.sport),
+    vertical: asLabel(obj.vertical),
+    sub_verticals: subVerticals,
+    moments,
+  };
+}
+
+function buildApexPlainTextEmailBody(payload: {
+  requestorEmail: string;
+  requestorName: string;
+  brand: string;
+  inventoryChannel: string;
+  notes: string | null;
+  dealPayload: ApexDealPayload | null;
+  appVariant: string | null;
+  submittedAtIso: string;
+}) {
+  const sport = labelFromDealItem(payload.dealPayload?.sport ?? null) ?? "Not provided";
+  const vertical = labelFromDealItem(payload.dealPayload?.vertical ?? null) ?? "Not provided";
+  const subVerticals = (payload.dealPayload?.sub_verticals ?? [])
+    .map((item) => labelFromDealItem(item))
+    .filter((item): item is string => Boolean(item));
+  const moments = (payload.dealPayload?.moments ?? []).map(formatApexMomentLine);
+
+  return [
+    "New Apex custom moment RFP submitted from Audience Tool",
+    "",
+    "Requestor",
+    `- Name: ${payload.requestorName}`,
+    `- Email: ${payload.requestorEmail}`,
+    `- Brand / account: ${payload.brand}`,
+    "",
+    "Package",
+    `- Sport: ${sport}`,
+    `- Vertical: ${vertical}`,
+    `- Sub-verticals: ${subVerticals.length > 0 ? subVerticals.join(", ") : "None"}`,
+    `- Moments:`,
+    ...(moments.length > 0 ? moments.map((line) => `  - ${line}`) : ["  - None"]),
+    "",
+    "Deal setup details",
+    `- Preferred Inventory Channel: ${payload.inventoryChannel}`,
+    "",
+    "Notes",
+    payload.notes ?? "None",
+    "",
+    "Metadata",
+    `- Submitted At (UTC): ${payload.submittedAtIso}`,
+    `- App Variant: ${payload.appVariant ?? "apex"}`,
+    `- Request Kind: apex_moment_rfp`,
+  ].join("\n");
 }
 
 function json(status: number, body: Record<string, unknown>) {
@@ -226,6 +337,7 @@ Deno.serve(async (req: Request) => {
     const requestorEmail = asNonEmptyString(body.requestor_email);
     const requestorName = asNonEmptyString(body.requestor_name ?? null);
     const requestorCompany = asNonEmptyString(body.requestor_company ?? null);
+    const brand = asNonEmptyString(body.brand ?? null);
     const dsp = asNonEmptyString(body.dsp);
     const dspPlatforms = sanitizeStringArray(body.dsp_platforms);
     const dspSeatId = asNonEmptyString(body.dsp_seat_id);
@@ -240,33 +352,14 @@ Deno.serve(async (req: Request) => {
     const sspPreference = asNonEmptyString(body.ssp_preference ?? null);
     const audiences = sanitizeAudiences(body.audiences);
     const dealMoment = sanitizeMoment(body.moment ?? null);
-    const requestKind = body.request_kind === "moment"
-      ? "moment"
-      : body.request_kind === "deal"
-      ? "deal"
-      : "audience";
+    const dealPayload = sanitizeApexDealPayload(body.deal_payload ?? null);
+    const isApexMomentRfp = body.request_kind === "apex_moment_rfp";
 
     if (!requestorEmail || !EMAIL_REGEX.test(requestorEmail)) {
       return json(400, { ok: false, error: "A valid requestor email is required." });
     }
     if (!requestorName) {
       return json(400, { ok: false, error: "Requestor name is required." });
-    }
-    if (!requestorCompany) {
-      return json(400, { ok: false, error: "Requestor company is required." });
-    }
-    if (!dsp) return json(400, { ok: false, error: "DSP or Platform is required." });
-    if (appVariant === "index-exchange") {
-      if (!buyerSeat) return json(400, { ok: false, error: "Buyer seat is required." });
-      if (!campaignName) return json(400, { ok: false, error: "Campaign name is required." });
-      if (!flightDates) return json(400, { ok: false, error: "Flight dates are required." });
-      if (!sspPreference) return json(400, { ok: false, error: "SSP preference is required." });
-    }
-    if (audiences.length === 0) {
-      return json(400, { ok: false, error: "At least one audience is required." });
-    }
-    if (requestKind === "deal" && !dealMoment) {
-      return json(400, { ok: false, error: "A moment is required for custom deal requests." });
     }
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -290,8 +383,106 @@ Deno.serve(async (req: Request) => {
       return json(500, { ok: false, error: "RESEND_API_KEY is not configured." });
     }
 
-    const primaryAudience = audiences[0];
+    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
     const submittedAtIso = new Date().toISOString();
+
+    if (isApexMomentRfp) {
+      if (!brand) {
+        return json(400, { ok: false, error: "Brand / account is required." });
+      }
+      if (!preferredInventoryChannel) {
+        return json(400, { ok: false, error: "Inventory channel is required." });
+      }
+
+      const sportLabel = labelFromDealItem(dealPayload?.sport ?? null);
+      const subjectParts = [
+        subjectPrefix,
+        "Apex Custom Moment RFP",
+        brand,
+        sportLabel,
+        preferredInventoryChannel,
+      ].filter((part): part is string => Boolean(part && part.trim().length > 0));
+      const subject = subjectParts.join(" | ");
+      const plainTextBody = buildApexPlainTextEmailBody({
+        requestorEmail,
+        requestorName,
+        brand,
+        inventoryChannel: preferredInventoryChannel,
+        notes,
+        dealPayload,
+        appVariant,
+        submittedAtIso,
+      });
+
+      const { data: inserted, error: insertError } = await supabase
+        .from("apex_form_submits")
+        .insert({
+          name: requestorName,
+          email: requestorEmail,
+          brand,
+          inventory_channel: preferredInventoryChannel,
+          notes,
+          request_kind: "apex_moment_rfp",
+          deal_payload: dealPayload,
+        })
+        .select("id")
+        .single();
+
+      if (insertError) {
+        console.error("Failed to insert Apex form submit:", insertError);
+        return json(500, { ok: false, error: "Failed to save Apex request." });
+      }
+
+      const emailResponse = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [toEmail],
+          subject,
+          text: plainTextBody,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        const emailErrorText = await emailResponse.text();
+        console.error("Failed to send Apex RFP email:", emailErrorText);
+        return json(502, {
+          ok: false,
+          error: "Request saved, but email delivery failed. Please notify Deal Desk manually.",
+          request_id: inserted.id,
+        });
+      }
+
+      return json(200, { ok: true, request_id: inserted.id });
+    }
+
+    if (!requestorCompany) {
+      return json(400, { ok: false, error: "Requestor company is required." });
+    }
+    if (!dsp) return json(400, { ok: false, error: "DSP or Platform is required." });
+    if (appVariant === "index-exchange") {
+      if (!buyerSeat) return json(400, { ok: false, error: "Buyer seat is required." });
+      if (!campaignName) return json(400, { ok: false, error: "Campaign name is required." });
+      if (!flightDates) return json(400, { ok: false, error: "Flight dates are required." });
+      if (!sspPreference) return json(400, { ok: false, error: "SSP preference is required." });
+    }
+    if (audiences.length === 0) {
+      return json(400, { ok: false, error: "At least one audience is required." });
+    }
+    const requestKind: "audience" | "moment" | "deal" = body.request_kind === "moment"
+      ? "moment"
+      : body.request_kind === "deal"
+      ? "deal"
+      : "audience";
+    if (requestKind === "deal" && !dealMoment) {
+      return json(400, { ok: false, error: "A moment is required for custom deal requests." });
+    }
+
+    const primaryAudience = audiences[0];
     const subjectParts = [
       subjectPrefix,
       requestKind === "deal" ? "Custom Deal Request" : "Deal ID Request",
@@ -325,7 +516,6 @@ Deno.serve(async (req: Request) => {
       submittedAtIso,
     });
 
-    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
     const { data: inserted, error: insertError } = await supabase
       .from("activation_requests")
       .insert({
