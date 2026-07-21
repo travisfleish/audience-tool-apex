@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Check, CheckCircle2, ChevronDown, Loader2, X } from 'lucide-react';
+import { supabase } from '../../../core/supabase';
 import { APEX_INVENTORY_CHANNELS } from '../config';
 import { formatApexMomentLabel, type ApexDeal } from '../apexDeal';
 import { useApexGate } from '../ApexGateContext';
@@ -51,24 +52,30 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
       return;
     }
 
+    const name = (session?.name ?? '').trim();
+    const email = (session?.email ?? '').trim().toLowerCase();
+    if (!name || !email) {
+      setError('Sign in at the gate again, then resubmit.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      // Scaffold: log payload locally. Wire to submit-activation-request next.
-      const payload = {
-        app_variant: 'apex',
-        request_kind: 'apex_moment_rfp',
-        name: session?.name ?? '',
-        email: session?.email ?? '',
+      const { error: insertError } = await supabase.from('apex_form_submits').insert({
+        name,
+        email,
         brand: brand.trim(),
         inventory_channel: inventoryChannel,
-        notes: notes.trim(),
-        sport: deal.sport,
-        vertical: deal.vertical,
-        sub_verticals: deal.subVerticals,
-        moments: deal.moments,
-      };
-      console.info('[apex] submit RFP payload', payload);
-      await new Promise(resolve => setTimeout(resolve, 600));
+        notes: notes.trim() || null,
+        request_kind: 'apex_moment_rfp',
+        deal_payload: {
+          sport: deal.sport,
+          vertical: deal.vertical,
+          sub_verticals: deal.subVerticals,
+          moments: deal.moments,
+        },
+      });
+      if (insertError) throw insertError;
       setSubmitted(true);
       onSubmitted();
     } catch {

@@ -1981,17 +1981,17 @@
         },
         {
           "id": "tournament--all_sport--clutch-time-close-score-10-mins-soccer-2-mins-basketball--4",
-          "name": "Clutch Time Close Score (10 mins soccer, 2 mins basketball)",
+          "name": "Clutch Time Close Score (10 Mins Soccer, 2 Mins Basketball)",
           "sportSlug": "all_sport"
         },
         {
           "id": "tournament--all_sport--decisive-win-in-the-making--5",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "all_sport"
         },
         {
           "id": "tournament--all_sport--late-game-rally-tying-goal-with-15-mins-left-soccer-tying-bucket-with-2-mins-left-basketball--6",
-          "name": "Late Game Rally (tying goal with 15 mins left – soccer, tying bucket with 2 mins left – basketball)",
+          "name": "Late Game Rally (Tying Goal with 15 Mins Left – Soccer, Tying Bucket with 2 Mins Left – Basketball)",
           "sportSlug": "all_sport"
         },
         {
@@ -2016,7 +2016,7 @@
         },
         {
           "id": "tournament--football--decisive-win-in-the-making--11",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "football"
         },
         {
@@ -2046,7 +2046,7 @@
         },
         {
           "id": "tournament--basketball--decisive-win-in-the-making--17",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "basketball"
         },
         {
@@ -2076,7 +2076,7 @@
         },
         {
           "id": "tournament--nhl--decisive-win-in-the-making--23",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "nhl"
         },
         {
@@ -2106,12 +2106,12 @@
         },
         {
           "id": "tournament--mlb--decisive-win-in-the-making--29",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "mlb"
         },
         {
           "id": "tournament--mlb--late-game-rally-tying-run-in-9th-inning--30",
-          "name": "Late Game Rally (tying run in 9th Inning)",
+          "name": "Late Game Rally (Tying Run in 9th Inning)",
           "sportSlug": "mlb"
         },
         {
@@ -2136,12 +2136,12 @@
         },
         {
           "id": "tournament--soccer_world_cup--decisive-win-in-the-making--35",
-          "name": "Decisive win in the making",
+          "name": "Decisive Win in the Making",
           "sportSlug": "soccer_world_cup"
         },
         {
           "id": "tournament--soccer_world_cup--late-game-rally-tying-goal-with-15-mins-left--36",
-          "name": "Late Game Rally (tying goal with 15 mins left)",
+          "name": "Late Game Rally (Tying Goal with 15 Mins Left)",
           "sportSlug": "soccer_world_cup"
         }
       ]

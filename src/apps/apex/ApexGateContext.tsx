@@ -1,8 +1,18 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { supabase } from '../../core/supabase';
 import { APEX_ALLOWED_EMAIL_DOMAIN } from './config';
 
 const STORAGE_KEY = 'apex_gate_session';
 const SESSION_TTL_DAYS = Number(import.meta.env.VITE_GATE_SESSION_TTL_DAYS ?? 14);
+
+async function logApexGateLogin(name: string, email: string) {
+  try {
+    const { error } = await supabase.from('apex_gate_logins').insert({ name, email });
+    if (error) console.warn('[apex] gate login tracking failed', error.message);
+  } catch (err) {
+    console.warn('[apex] gate login tracking failed', err);
+  }
+}
 
 export type ApexGateSession = {
   name: string;
@@ -71,6 +81,7 @@ export function ApexGateProvider({ children }: { children: ReactNode }) {
     const next: ApexGateSession = { name, email, unlockedAt: Date.now() };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     setSession(next);
+    void logApexGateLogin(name, email);
     return { ok: true as const };
   }, []);
 
