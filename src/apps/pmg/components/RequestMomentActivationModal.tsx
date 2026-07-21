@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Loader2, X } from 'lucide-react';
 import type { MomentActivationTarget } from '../../../core/moments/types';
 import { DspDropdown } from './DspDropdown';
+import { formatFlightDatesForEmail } from '../../../utils/formatFlightDates';
 
 function getAppVariant(): string | null {
   return import.meta.env.VITE_APP_VARIANT || null;
@@ -170,9 +171,7 @@ export function RequestMomentActivationModal({ onClose, moment }: RequestMomentA
           displayName: momentDisplayName,
         },
       ];
-      const flightDates = formData.flightEnd.trim()
-        ? `${formData.flightStart} – ${formData.flightEnd}`
-        : formData.flightStart;
+      const flightDates = formatFlightDatesForEmail(formData.flightStart, formData.flightEnd);
 
       const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-activation-request`;
       const response = await fetch(apiUrl, {

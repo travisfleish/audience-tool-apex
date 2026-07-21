@@ -4,6 +4,7 @@ import { Audience } from '../../../core/types';
 import type { MomentActivationTarget } from '../../../core/moments/types';
 import { formatMomentLabel } from '../../../core/dealBuilder';
 import { DspDropdown } from './DspDropdown';
+import { formatFlightDatesForEmail } from '../../../utils/formatFlightDates';
 
 function getAppVariant(): string | null {
   return import.meta.env.VITE_APP_VARIANT || null;
@@ -140,9 +141,7 @@ export function ActivateModal({
 
       const isDealSubmission = !!moment;
       const momentLabel = moment ? formatMomentLabel(moment) : null;
-      const flightDates = formData.flightEnd.trim()
-        ? `${formData.flightStart} – ${formData.flightEnd}`
-        : formData.flightStart;
+      const flightDates = formatFlightDatesForEmail(formData.flightStart, formData.flightEnd);
 
       const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-activation-request`;
       const response = await fetch(apiUrl, {

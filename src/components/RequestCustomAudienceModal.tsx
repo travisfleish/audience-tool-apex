@@ -3,6 +3,7 @@ import { Loader2, X } from 'lucide-react';
 import { DspDropdown } from '../apps/pmg/components/DspDropdown';
 import { APP_VARIANT } from '../appVariant';
 import { getConfig } from '../core/config/getConfig';
+import { formatFlightDatesForEmail } from '../utils/formatFlightDates';
 
 const DEFAULT_CUSTOM_AUDIENCE_DESCRIPTION_PLACEHOLDER =
   'e.g. Fans of Premier League clubs who also purchase athletic footwear';
@@ -95,9 +96,7 @@ export function RequestCustomAudienceModal({ onClose }: RequestCustomAudienceMod
       const combinedNotes = [audienceDescription, formData.notes?.trim() || null]
         .filter((value): value is string => Boolean(value && value.length > 0))
         .join('\n\n');
-      const flightDates = formData.flightEnd.trim()
-        ? `${formData.flightStart} – ${formData.flightEnd}`
-        : formData.flightStart;
+      const flightDates = formatFlightDatesForEmail(formData.flightStart, formData.flightEnd);
 
       const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-activation-request`;
       const response = await fetch(apiUrl, {

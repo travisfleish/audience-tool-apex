@@ -35,7 +35,7 @@ export const apexConfig: AppConfig = {
   },
 };
 
-export const APEX_ALLOWED_EMAIL_DOMAIN = 'apexexchange.com';
+export const APEX_ALLOWED_EMAIL_DOMAIN = 'apxexchange.com';
 
 export const APEX_INVENTORY_CHANNELS = [
   'CTV',

@@ -3,6 +3,7 @@ import { X, Loader2 } from 'lucide-react';
 import { Audience } from '../../../core/types';
 import { DspDropdown } from '../../pmg/components/DspDropdown';
 import { indexExchangeConfig } from '../config';
+import { formatFlightDatesForEmail } from '../../../utils/formatFlightDates';
 
 const DSP_OPTIONS = [
   'Amazon',
@@ -83,9 +84,7 @@ export function IndexExchangeActivateModal({
           ? requestAudiences
           : [{ id: audience.id, name: audience.name, displayName }];
 
-      const flightDates = formData.flightEnd.trim()
-        ? `${formData.flightStart} – ${formData.flightEnd}`
-        : formData.flightStart;
+      const flightDates = formatFlightDatesForEmail(formData.flightStart, formData.flightEnd);
 
       const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-activation-request`;
       const response = await fetch(apiUrl, {
