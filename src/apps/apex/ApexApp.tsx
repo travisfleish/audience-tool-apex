@@ -33,6 +33,7 @@ function ApexAppContent() {
     clearVertical,
     toggleSubVertical,
     toggleMoment,
+    addCustomMoment,
     removeMoment,
     clearDeal,
     dealItemCount,
@@ -83,6 +84,8 @@ function ApexAppContent() {
                   onSelectVertical={setVertical}
                   onToggleSubVertical={toggleSubVertical}
                   onToggleMoment={toggleMoment}
+                  onAddCustomMoment={addCustomMoment}
+                  onRemoveMoment={removeMoment}
                 />
               </ApexProtected>
             }

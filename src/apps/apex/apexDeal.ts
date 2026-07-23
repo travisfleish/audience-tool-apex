@@ -49,6 +49,31 @@ export function parseStoredApexDeal(saved: string): ApexDeal {
   }
 }
 
+const CUSTOM_MOMENT_ID_PREFIX = 'custom:';
+
+export function isCustomApexMoment(moment: MomentActivationTarget): boolean {
+  return moment.id.startsWith(CUSTOM_MOMENT_ID_PREFIX);
+}
+
+export function createCustomApexMoment(
+  name: string,
+  sportLabel?: string,
+): MomentActivationTarget {
+  const trimmed = name.trim();
+  const slug = trimmed
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 48);
+  return {
+    id: `${CUSTOM_MOMENT_ID_PREFIX}${Date.now()}-${slug || 'moment'}`,
+    name: trimmed,
+    category: 'context',
+    sportLabel,
+    packageName: 'Custom',
+  };
+}
+
 export function formatApexMomentLabel(moment: MomentActivationTarget): string {
   const parts = [moment.name];
   if (moment.packageName && moment.packageName !== moment.name) {

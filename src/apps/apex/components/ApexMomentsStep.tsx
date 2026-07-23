@@ -7,6 +7,7 @@ import {
   getSportLabel,
 } from '../../../core/moments/momentsCatalog';
 import type { MomentActivationTarget, ThemedMomentPackage } from '../../../core/moments/types';
+import { isCustomApexMoment } from '../apexDeal';
 import type { ApexSport } from '../sportsCatalog';
 import { apexConfig } from '../config';
 
@@ -99,7 +100,11 @@ export function ApexMomentsStep({
   const sportLabel = catalogSportSlug
     ? getSportLabel(catalogSportSlug)
     : sport?.label ?? '';
-  const selectedIds = useMemo(() => new Set(selectedMoments.map(m => m.id)), [selectedMoments]);
+  const catalogMoments = useMemo(
+    () => selectedMoments.filter(moment => !isCustomApexMoment(moment)),
+    [selectedMoments],
+  );
+  const selectedIds = useMemo(() => new Set(catalogMoments.map(m => m.id)), [catalogMoments]);
 
   if (locked) {
     return (
@@ -145,10 +150,10 @@ export function ApexMomentsStep({
             custom recommendation, not a final buy.
           </p>
         </div>
-        {selectedMoments.length > 0 ? (
+        {catalogMoments.length > 0 ? (
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--apex-accent)]/40 bg-[var(--apex-glow)] px-3 py-1.5 text-xs font-semibold text-[var(--apex-accent)]">
             <Check className="h-3.5 w-3.5" />
-            {selectedMoments.length} moments
+            {catalogMoments.length} moments
           </span>
         ) : null}
       </div>

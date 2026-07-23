@@ -16,7 +16,7 @@ export function ApexHeader({ builderCount = 0, builderSidebarOpen = false }: Ape
 
   useEffect(() => {
     let isTicking = false;
-    const fadeDistance = 180;
+    const fadeDistance = 80;
     const isMobileViewport = window.matchMedia('(max-width: 639px)').matches;
     const minimumMobileOpacity = 0.9;
 

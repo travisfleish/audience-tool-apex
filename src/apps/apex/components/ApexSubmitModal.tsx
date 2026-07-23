@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Check, CheckCircle2, ChevronDown, Loader2, X } from 'lucide-react';
+import { useState, type FormEvent } from 'react';
+import { Check, CheckCircle2, Loader2, X } from 'lucide-react';
 import { APEX_INVENTORY_CHANNELS } from '../config';
 import { formatApexMomentLabel, type ApexDeal } from '../apexDeal';
 import { useApexGate } from '../ApexGateContext';
@@ -10,34 +10,30 @@ type ApexSubmitModalProps = {
   onSubmitted: () => void;
 };
 
+const EXCLUSIVE_CHANNELS = new Set(['Not sure yet']);
+
 export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalProps) {
   const { session } = useApexGate();
   const [brand, setBrand] = useState('');
-  const [inventoryChannel, setInventoryChannel] = useState('');
-  const [channelOpen, setChannelOpen] = useState(false);
+  const [inventoryChannels, setInventoryChannels] = useState<string[]>([]);
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const channelRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!channelOpen) return;
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (!channelRef.current?.contains(event.target as Node)) {
-        setChannelOpen(false);
+  const toggleChannel = (channel: string) => {
+    setError('');
+    setInventoryChannels(current => {
+      const isSelected = current.includes(channel);
+      if (isSelected) {
+        return current.filter(item => item !== channel);
       }
-    };
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setChannelOpen(false);
-    };
-    document.addEventListener('mousedown', handleOutsideClick);
-    document.addEventListener('keydown', handleEscape);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [channelOpen]);
+      if (EXCLUSIVE_CHANNELS.has(channel)) {
+        return [channel];
+      }
+      return [...current.filter(item => !EXCLUSIVE_CHANNELS.has(item)), channel];
+    });
+  };
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -46,8 +42,8 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
       setError('Add the brand / account for this inquiry.');
       return;
     }
-    if (!inventoryChannel) {
-      setError('Select an inventory channel.');
+    if (inventoryChannels.length === 0) {
+      setError('Select at least one inventory channel.');
       return;
     }
 
@@ -57,6 +53,8 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
       setError('Sign in at the gate again, then resubmit.');
       return;
     }
+
+    const preferredInventoryChannel = inventoryChannels.join(', ');
 
     setIsSubmitting(true);
     try {
@@ -71,7 +69,7 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
           requestor_email: email,
           requestor_name: name,
           brand: brand.trim(),
-          preferred_inventory_channel: inventoryChannel,
+          preferred_inventory_channel: preferredInventoryChannel,
           notes: notes.trim() || null,
           app_variant: import.meta.env.VITE_APP_VARIANT || 'apex',
           request_kind: 'apex_moment_rfp',
@@ -201,62 +199,40 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
               />
             </div>
 
-            <div ref={channelRef} className="relative">
-              <label htmlFor="apex-inventory" className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[var(--apex-text-muted)]">
-                Inventory channel
-              </label>
-              <button
-                id="apex-inventory"
-                type="button"
-                aria-haspopup="listbox"
-                aria-expanded={channelOpen}
-                onClick={() => setChannelOpen(prev => !prev)}
-                className="relative w-full rounded-lg border border-[var(--apex-line-strong)] bg-[var(--apex-panel-lift)] px-3 py-2.5 pr-10 text-left text-sm outline-none focus:border-[var(--apex-accent)] focus:ring-2 focus:ring-[var(--apex-glow)]"
-              >
-                <span className={inventoryChannel ? 'text-[var(--apex-text)]' : 'text-[var(--apex-text-muted)]'}>
-                  {inventoryChannel || 'Select channel'}
-                </span>
-                <ChevronDown
-                  className={`pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--apex-text-muted)] transition-transform ${channelOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {channelOpen ? (
-                <div
-                  role="listbox"
-                  aria-labelledby="apex-inventory"
-                  className="absolute z-30 mt-1.5 w-full overflow-hidden rounded-lg border border-[var(--apex-line)] bg-[var(--apex-panel)] shadow-[0_12px_40px_rgba(12,18,32,0.12)]"
-                >
-                  <div className="max-h-64 overflow-auto py-1">
-                    {APEX_INVENTORY_CHANNELS.map(channel => {
-                      const isSelected = inventoryChannel === channel;
-                      return (
-                        <button
-                          key={channel}
-                          type="button"
-                          role="option"
-                          aria-selected={isSelected}
-                          onClick={() => {
-                            setInventoryChannel(channel);
-                            setChannelOpen(false);
-                            setError('');
-                          }}
-                          className={`flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm transition-colors ${
-                            isSelected
-                              ? 'bg-[var(--apex-glow)] font-medium text-[var(--apex-accent)]'
-                              : 'text-[var(--apex-text)] hover:bg-[var(--apex-ink-soft)]'
-                          }`}
-                        >
-                          <span className="flex h-4 w-4 shrink-0 items-center justify-center">
-                            {isSelected ? <Check className="h-4 w-4" /> : null}
-                          </span>
-                          {channel}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : null}
-            </div>
+            <fieldset>
+              <legend className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--apex-text-muted)]">
+                Inventory channels
+              </legend>
+              <p className="mb-3 text-sm text-[var(--apex-text-muted)]">
+                Select all that apply — for example Display and OLV.
+              </p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {APEX_INVENTORY_CHANNELS.map(channel => {
+                  const isSelected = inventoryChannels.includes(channel);
+                  return (
+                    <button
+                      key={channel}
+                      type="button"
+                      aria-pressed={isSelected}
+                      onClick={() => toggleChannel(channel)}
+                      className={[
+                        'flex items-center gap-2 rounded-lg border px-3 py-2.5 text-left text-sm transition',
+                        isSelected
+                          ? 'border-[var(--apex-accent)] bg-[var(--apex-glow)] font-medium text-[var(--apex-accent)]'
+                          : 'border-[var(--apex-line)] bg-[var(--apex-panel-lift)] text-[var(--apex-text)] hover:border-[var(--apex-line-strong)]',
+                      ].join(' ')}
+                    >
+                      {isSelected ? (
+                        <Check className="h-4 w-4 shrink-0" />
+                      ) : (
+                        <span className="h-4 w-4 shrink-0 rounded border border-[var(--apex-line-strong)]" />
+                      )}
+                      {channel}
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
 
             <div>
               <label htmlFor="apex-notes" className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[var(--apex-text-muted)]">

@@ -39,7 +39,7 @@ export const APEX_ALLOWED_EMAIL_DOMAIN = 'apxexchange.com';
 
 export const APEX_INVENTORY_CHANNELS = [
   'CTV',
-  'Digital video',
+  'OLV',
   'Display',
   'Audio',
   'Social',

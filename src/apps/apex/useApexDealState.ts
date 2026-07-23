@@ -94,6 +94,19 @@ export function useApexDealState(storageKey: string) {
     });
   }, []);
 
+  const addCustomMoment = useCallback((moment: MomentActivationTarget) => {
+    setDeal(current => {
+      const duplicate = current.moments.some(
+        item => item.name.trim().toLowerCase() === moment.name.trim().toLowerCase(),
+      );
+      if (duplicate) return current;
+      return {
+        ...current,
+        moments: [...current.moments, moment],
+      };
+    });
+  }, []);
+
   const removeMoment = useCallback((momentId: string) => {
     setDeal(current => ({
       ...current,
@@ -113,6 +126,7 @@ export function useApexDealState(storageKey: string) {
     clearVertical,
     toggleSubVertical,
     toggleMoment,
+    addCustomMoment,
     removeMoment,
     clearDeal,
     dealItemCount: apexDealItemCount(deal),

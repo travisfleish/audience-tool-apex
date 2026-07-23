@@ -7,6 +7,7 @@ import type { MomentActivationTarget } from '../../../core/moments/types';
 import { ApexSportStep } from '../components/ApexSportStep';
 import { ApexVerticalStep } from '../components/ApexVerticalStep';
 import { ApexMomentsStep } from '../components/ApexMomentsStep';
+import { ApexCustomMomentStep } from '../components/ApexCustomMomentStep';
 
 type ApexHomeProps = {
   deal: ApexDeal;
@@ -15,6 +16,8 @@ type ApexHomeProps = {
   onSelectVertical: (vertical: ApexVertical) => void;
   onToggleSubVertical: (sub: ApexSubVertical) => void;
   onToggleMoment: (moment: MomentActivationTarget) => void;
+  onAddCustomMoment: (moment: MomentActivationTarget) => void;
+  onRemoveMoment: (momentId: string) => void;
 };
 
 export function ApexHome({
@@ -24,6 +27,8 @@ export function ApexHome({
   onSelectVertical,
   onToggleSubVertical,
   onToggleMoment,
+  onAddCustomMoment,
+  onRemoveMoment,
 }: ApexHomeProps) {
   const verticalUnlocked = Boolean(deal.sport);
   const momentsUnlocked = Boolean(deal.sport && deal.vertical && deal.subVerticals.length > 0);
@@ -113,12 +118,23 @@ export function ApexHome({
             isActive={activeStep === 3}
           />
         </div>
+
+        <div className="apex-reveal apex-reveal-delay-3">
+          <ApexCustomMomentStep
+            locked={!momentsUnlocked}
+            sport={deal.sport}
+            selectedMoments={deal.moments}
+            onAddCustomMoment={onAddCustomMoment}
+            onRemoveMoment={onRemoveMoment}
+          />
+        </div>
       </div>
 
       <footer className="mt-14 border-t border-[var(--apex-line)] pt-8">
         <p className="text-base font-medium leading-relaxed text-[var(--apex-text)]">
           Let our team build you a custom solution using your sport, vertical, and moments. Not
-          finding what you need? Include it in your RFP notes when you submit.
+          finding what you need? Add a custom moment above, or include more detail in your RFP notes
+          when you submit.
         </p>
       </footer>
     </main>
