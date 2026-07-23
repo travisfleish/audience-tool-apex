@@ -5,6 +5,7 @@ import {
   EMPTY_APEX_DEAL,
   isApexDealEmpty,
   parseStoredApexDeal,
+  type ApexAudienceInsight,
   type ApexDeal,
 } from './apexDeal';
 import type { ApexSport } from './sportsCatalog';
@@ -29,7 +30,7 @@ export function useApexDealState(storageKey: string) {
       return {
         ...current,
         sport,
-        // Moments are sport-scoped — clear when sport changes.
+        // Moments are sport-scoped; clear when sport changes.
         moments: [],
       };
     });
@@ -114,6 +115,26 @@ export function useApexDealState(storageKey: string) {
     }));
   }, []);
 
+  const addAudienceInsight = useCallback((insight: ApexAudienceInsight) => {
+    setDeal(current => {
+      const duplicate = current.audienceInsights.some(
+        item => item.text.trim().toLowerCase() === insight.text.trim().toLowerCase(),
+      );
+      if (duplicate) return current;
+      return {
+        ...current,
+        audienceInsights: [...current.audienceInsights, insight],
+      };
+    });
+  }, []);
+
+  const removeAudienceInsight = useCallback((insightId: string) => {
+    setDeal(current => ({
+      ...current,
+      audienceInsights: current.audienceInsights.filter(item => item.id !== insightId),
+    }));
+  }, []);
+
   const clearDeal = useCallback(() => {
     setDeal(EMPTY_APEX_DEAL);
   }, []);
@@ -128,6 +149,8 @@ export function useApexDealState(storageKey: string) {
     toggleMoment,
     addCustomMoment,
     removeMoment,
+    addAudienceInsight,
+    removeAudienceInsight,
     clearDeal,
     dealItemCount: apexDealItemCount(deal),
     hasDeal: !isApexDealEmpty(deal),

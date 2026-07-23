@@ -90,7 +90,7 @@ export function ApexSportStep({ selected, onSelect, isActive }: ApexSportStepPro
           <div className="mt-2 max-h-48 overflow-auto rounded-xl border border-[var(--apex-line)] bg-[var(--apex-ink-soft)]">
             {results.length === 0 ? (
               <p className="px-4 py-3 text-sm text-[var(--apex-text-muted)]">
-                We don’t list that sport yet — pick a featured sport for now, or note it in your RFP
+                We don’t list that sport yet. Pick a featured sport for now, or note it in your RFP
                 at submit.
               </p>
             ) : (

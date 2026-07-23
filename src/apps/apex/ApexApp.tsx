@@ -35,6 +35,8 @@ function ApexAppContent() {
     toggleMoment,
     addCustomMoment,
     removeMoment,
+    addAudienceInsight,
+    removeAudienceInsight,
     clearDeal,
     dealItemCount,
   } = useApexDealState(apexConfig.notebookStorageKey);
@@ -86,6 +88,8 @@ function ApexAppContent() {
                   onToggleMoment={toggleMoment}
                   onAddCustomMoment={addCustomMoment}
                   onRemoveMoment={removeMoment}
+                  onAddAudienceInsight={addAudienceInsight}
+                  onRemoveAudienceInsight={removeAudienceInsight}
                 />
               </ApexProtected>
             }
@@ -99,6 +103,7 @@ function ApexAppContent() {
                   onClearSport={clearSport}
                   onClearVertical={clearVertical}
                   onRemoveMoment={removeMoment}
+                  onRemoveAudienceInsight={removeAudienceInsight}
                   onDealSubmitted={clearDeal}
                 />
               </ApexProtected>
@@ -113,6 +118,7 @@ function ApexAppContent() {
           onClearSport={clearSport}
           onClearVertical={clearVertical}
           onRemoveMoment={removeMoment}
+          onRemoveAudienceInsight={removeAudienceInsight}
           onDealSubmitted={clearDeal}
           isMinimized={isNotebookMinimized}
           onMinimizedChange={setIsNotebookMinimized}

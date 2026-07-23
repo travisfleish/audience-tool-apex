@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
 import type { AppCopy } from '../../../core/config/appConfig';
-import type { ApexDeal } from '../apexDeal';
+import type { ApexAudienceInsight, ApexDeal } from '../apexDeal';
 import type { ApexSport } from '../sportsCatalog';
 import type { ApexSubVertical, ApexVertical } from '../verticalsCatalog';
 import type { MomentActivationTarget } from '../../../core/moments/types';
 import { ApexSportStep } from '../components/ApexSportStep';
 import { ApexVerticalStep } from '../components/ApexVerticalStep';
+import { ApexAudienceInsightsStep } from '../components/ApexAudienceInsightsStep';
 import { ApexMomentsStep } from '../components/ApexMomentsStep';
 import { ApexCustomMomentStep } from '../components/ApexCustomMomentStep';
 
@@ -18,6 +19,8 @@ type ApexHomeProps = {
   onToggleMoment: (moment: MomentActivationTarget) => void;
   onAddCustomMoment: (moment: MomentActivationTarget) => void;
   onRemoveMoment: (momentId: string) => void;
+  onAddAudienceInsight: (insight: ApexAudienceInsight) => void;
+  onRemoveAudienceInsight: (insightId: string) => void;
 };
 
 export function ApexHome({
@@ -29,6 +32,8 @@ export function ApexHome({
   onToggleMoment,
   onAddCustomMoment,
   onRemoveMoment,
+  onAddAudienceInsight,
+  onRemoveAudienceInsight,
 }: ApexHomeProps) {
   const verticalUnlocked = Boolean(deal.sport);
   const momentsUnlocked = Boolean(deal.sport && deal.vertical && deal.subVerticals.length > 0);
@@ -109,6 +114,15 @@ export function ApexHome({
           />
         </div>
 
+        <div className="apex-reveal apex-reveal-delay-2">
+          <ApexAudienceInsightsStep
+            locked={!verticalUnlocked}
+            insights={deal.audienceInsights}
+            onAddInsight={onAddAudienceInsight}
+            onRemoveInsight={onRemoveAudienceInsight}
+          />
+        </div>
+
         <div ref={momentsRef} className="apex-reveal apex-reveal-delay-3">
           <ApexMomentsStep
             locked={!momentsUnlocked}
@@ -133,8 +147,8 @@ export function ApexHome({
       <footer className="mt-14 border-t border-[var(--apex-line)] pt-8">
         <p className="text-base font-medium leading-relaxed text-[var(--apex-text)]">
           Let our team build you a custom solution using your sport, vertical, and moments. Not
-          finding what you need? Add a custom moment above, or include more detail in your RFP notes
-          when you submit.
+          finding what you need? Add audience insights or a custom moment above, or include more
+          detail in your RFP notes when you submit.
         </p>
       </footer>
     </main>

@@ -77,6 +77,7 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
             sport: deal.sport,
             vertical: deal.vertical,
             sub_verticals: deal.subVerticals,
+            audience_insights: deal.audienceInsights,
             moments: deal.moments,
           },
         }),
@@ -128,7 +129,7 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
             <CheckCircle2 className="h-10 w-10 text-[var(--apex-accent)]" />
             <p className="text-lg font-semibold">Request received</p>
             <p className="text-sm text-[var(--apex-text-muted)]">
-              Thanks — your custom Apex moment inquiry is in.
+              Thanks. Your custom Apex moment inquiry is in.
             </p>
             <button
               type="button"
@@ -155,9 +156,15 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
                     ? ` · ${deal.subVerticals.map(s => s.label).join(', ')}`
                     : ''}
                 </li>
+                {deal.audienceInsights.length > 0 ? (
+                  <li>
+                    <span className="text-[var(--apex-text-muted)]">Audience insights:</span>{' '}
+                    {deal.audienceInsights.map(insight => insight.text).join('; ')}
+                  </li>
+                ) : null}
                 <li>
                   <span className="text-[var(--apex-text-muted)]">Moments:</span>{' '}
-                  {deal.moments.map(formatApexMomentLabel).join('; ') || '—'}
+                  {deal.moments.map(formatApexMomentLabel).join('; ') || '-'}
                 </li>
               </ul>
             </div>
@@ -204,7 +211,7 @@ export function ApexSubmitModal({ deal, onClose, onSubmitted }: ApexSubmitModalP
                 Inventory channels
               </legend>
               <p className="mb-3 text-sm text-[var(--apex-text-muted)]">
-                Select all that apply — for example Display and OLV.
+                Select all that apply, for example Display and OLV.
               </p>
               <div className="grid gap-2 sm:grid-cols-2">
                 {APEX_INVENTORY_CHANNELS.map(channel => {

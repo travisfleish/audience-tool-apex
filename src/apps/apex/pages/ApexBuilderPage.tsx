@@ -8,6 +8,7 @@ type ApexBuilderPageProps = {
   onClearSport: () => void;
   onClearVertical: () => void;
   onRemoveMoment: (momentId: string) => void;
+  onRemoveAudienceInsight: (insightId: string) => void;
   onDealSubmitted: () => void;
 };
 
@@ -16,6 +17,7 @@ export function ApexBuilderPage({
   onClearSport,
   onClearVertical,
   onRemoveMoment,
+  onRemoveAudienceInsight,
   onDealSubmitted,
 }: ApexBuilderPageProps) {
   const [showSubmit, setShowSubmit] = useState(false);
@@ -49,6 +51,30 @@ export function ApexBuilderPage({
             'Nothing selected yet'
           )}
         </Panel>
+        {deal.audienceInsights.length > 0 ? (
+          <div className="rounded-2xl border border-[var(--apex-line)] bg-[var(--apex-panel)] p-5">
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-[var(--apex-text-muted)]">
+              Audience insights
+            </p>
+            <ul className="mt-3 space-y-2">
+              {deal.audienceInsights.map(insight => (
+                <li
+                  key={insight.id}
+                  className="flex items-start justify-between gap-3 rounded-lg border border-[var(--apex-line)] bg-[var(--apex-ink-soft)] px-3 py-2"
+                >
+                  <span className="text-sm">{insight.text}</span>
+                  <button
+                    type="button"
+                    onClick={() => onRemoveAudienceInsight(insight.id)}
+                    className="text-xs text-[var(--apex-text-muted)] hover:text-red-600"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
         <div className="rounded-2xl border border-[var(--apex-line)] bg-[var(--apex-panel)] p-5">
           <p className="text-[10px] font-semibold uppercase tracking-wide text-[var(--apex-text-muted)]">
             Moments

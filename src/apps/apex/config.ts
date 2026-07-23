@@ -31,7 +31,7 @@ export const apexConfig: AppConfig = {
     heroSubtitle2: undefined,
     momentsTitle: 'Select your moments',
     momentsSubtitle:
-      'Explore contextual signals across the season — pre-game, in-game, and post-game inspiration for your custom Apex recommendation.',
+      'Explore contextual signals across the season: pre-game, in-game, and post-game inspiration for your custom Apex recommendation.',
   },
 };
 

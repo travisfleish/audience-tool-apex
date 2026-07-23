@@ -46,7 +46,7 @@ function PackageBlock({
       <div className="grid gap-2 px-4 pb-4 sm:grid-cols-2">
         {signals.length === 0 ? (
           <p className="text-sm text-[var(--apex-text-muted)] sm:col-span-2">
-            No discrete signals listed for this sport yet — you can still note interest in your RFP.
+            No discrete signals listed for this sport yet. You can still note interest in your RFP.
           </p>
         ) : (
           signals.map(signal => {
@@ -146,7 +146,7 @@ export function ApexMomentsStep({
             {apexConfig.copy.momentsTitle}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--apex-text-muted)]">
-            {apexConfig.copy.momentsSubtitle} Add as many as you want — this is inspiration for your
+            {apexConfig.copy.momentsSubtitle} Add as many as you want. This is inspiration for your
             custom recommendation, not a final buy.
           </p>
         </div>
@@ -160,7 +160,7 @@ export function ApexMomentsStep({
 
       {!hasCatalogCoverage ? (
         <p className="mt-6 rounded-xl border border-[var(--apex-warm)]/30 bg-[var(--apex-warm)]/10 px-4 py-3 text-sm text-[var(--apex-warm)]">
-          Off-the-shelf moment signals for {sport?.label} are limited — showing shared context
+          Off-the-shelf moment signals for {sport?.label} are limited. Showing shared context
           packages as inspiration. Add sport-specific needs in your RFP notes at submit.
         </p>
       ) : null}

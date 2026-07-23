@@ -16,6 +16,7 @@ type ApexMomentBuilderProps = {
   onClearSport: () => void;
   onClearVertical: () => void;
   onRemoveMoment: (momentId: string) => void;
+  onRemoveAudienceInsight: (insightId: string) => void;
   onDealSubmitted: () => void;
   isMinimized: boolean;
   onMinimizedChange: (minimized: boolean) => void;
@@ -28,6 +29,7 @@ export function ApexMomentBuilder({
   onClearSport,
   onClearVertical,
   onRemoveMoment,
+  onRemoveAudienceInsight,
   onDealSubmitted,
   isMinimized,
   onMinimizedChange,
@@ -40,6 +42,7 @@ export function ApexMomentBuilder({
     (deal.sport ? 1 : 0) +
     (deal.vertical ? 1 : 0) +
     deal.subVerticals.length +
+    deal.audienceInsights.length +
     deal.moments.length;
   const complete = isApexDealComplete(deal);
 
@@ -138,6 +141,31 @@ export function ApexMomentBuilder({
                 </>
               ) : null}
             </Slot>
+
+            {deal.audienceInsights.length > 0 ? (
+              <div className="rounded-md bg-white/95 p-3 shadow-sm backdrop-blur-sm">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-gs-text-muted">
+                  Audience insights
+                </p>
+                <ul className="space-y-2">
+                  {deal.audienceInsights.map(insight => (
+                    <li key={insight.id} className="flex items-start justify-between gap-2">
+                      <p className="text-xs font-medium leading-snug text-gs-primary-900">
+                        {insight.text}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => onRemoveAudienceInsight(insight.id)}
+                        className="rounded p-0.5 text-gs-text-muted hover:bg-red-500/10 hover:text-red-600"
+                        aria-label={`Remove insight: ${insight.text}`}
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             <div className="rounded-md bg-white/95 p-3 shadow-sm backdrop-blur-sm">
               <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-gs-text-muted">
